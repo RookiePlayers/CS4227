@@ -25,4 +25,6 @@ public class MazeScene extends Scene {
     public void setTime(long time) {
         this.timer = time;
     }
+
+    public void winLogic(){}
 }

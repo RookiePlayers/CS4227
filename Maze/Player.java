@@ -1,6 +1,7 @@
 package Maze;
 
 import inventory.Models.Inventory;
+import inventory.controls.Effects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -87,18 +88,21 @@ public class Player extends Cell {
         this.inventory = inventory;
     }
     public void drawPlayer(){
+
         System.out.println("Current-> "+current);
         double x=super.getI()*super.w;
         double y=super.getJ()*super.w;
         //x=40.0;
         setX(x);
         setY(y);
+        gc.setEffect(Effects.BLOOM(20.0));
         gc.setFill(this.color);
         gc.setStroke(Color.TRANSPARENT);
         gc.fillRect(getX(),
                 getY(),
                 getWidth(),
                 getHeight());
+        gc.setEffect(null);
 
     }
     public void moveRight(){
@@ -107,64 +111,85 @@ public class Player extends Cell {
         Cell next=checkPlayerNeighbours(current).get("E");
         System.out.println("Neighbour is at: "+next);
 
-        if(next!=null){
-            System.out.println("From: ("+this.i+", "+this.j+") to: ("+next.getI()+", "+next.getJ()+")");
-            if(!isWallEast(next)){
-                gc.clearRect(getX(),getY(),getWidth(),getHeight());
-                setI(next.getI());
-                setJ(next.getJ());
-                current=next;
-                drawPlayer();
-            }
-        }
+        movePlayer(Directions.EAST,next);
+
     }
     public void moveLeft(){
         //Check Neighbour
 
         Cell next=checkPlayerNeighbours(current).get("W");
         System.out.println("Neighbour is at: "+next);
-        if(next!=null){
-            System.out.println("From: ("+this.i+", "+this.j+") to: ("+next.getI()+", "+next.getJ()+")");
-            if(!isWallWest(next)){
-                gc.clearRect(getX(),getY(),getWidth(),getHeight());
-                setI(next.getI());
-                setJ(next.getJ());
-                current=next;
-                drawPlayer();
-            }
-        }
+        movePlayer(Directions.WEST,next);
     }
     public void moveUp(){
         //Check Neighbour
 
         Cell next=checkPlayerNeighbours(current).get("N");
         System.out.println("Neighbour is at: "+next);
-        if(next!=null){
-            System.out.println("From: ("+this.i+", "+this.j+") to: ("+next.getI()+", "+next.getJ()+")");
-            if(!isWallNorth(next)){
-                gc.clearRect(getX(),getY(),getWidth(),getHeight());
-                setI(next.getI());
-                setJ(next.getJ());
-                current=next;
-                drawPlayer();
-            }
-        }
+        movePlayer(Directions.NORTH,next);
     }
     public void moveDown(){
         //Check Neighbour
 
         Cell next=checkPlayerNeighbours(current).get("S");
         System.out.println("Neighbour is at: "+next);
-        if(next!=null){
-            System.out.println("From: ("+this.i+", "+this.j+") to: ("+next.getI()+", "+next.getJ()+")");
-            if(!isWallSouth(next)){
-                gc.clearRect(getX(),getY(),getWidth(),getHeight());
+       movePlayer(Directions.SOUTH,next);
+    }
+    public void movePlayer(Directions dir,Cell next){
+        boolean move=false;
+        if(next!=null) {
+            System.out.println("NExt is a door? " + next.isDoor());
+            System.out.println("From: (" + this.i + ", " + this.j + ") to: (" + next.getI() + ", " + next.getJ() + ")");
+
+            switch (dir) {
+                case EAST: {
+                    move = !isWallEast(next);
+                }
+                break;
+                case WEST: {
+                    move = !isWallWest(next);
+                }
+                break;
+                case NORTH: {
+                    move = !isWallNorth(next);
+                }
+                break;
+                case SOUTH: {
+                    move = !isWallSouth(next);
+                }
+                break;
+            }
+            if (move) {
+                gc.clearRect(getX(), getY(), getWidth(), getHeight());
                 setI(next.getI());
                 setJ(next.getJ());
-                current=next;
+                current = next;
                 drawPlayer();
+
+            }
+            if (next.isDoor()) {
+                current = this;
+                next.exitDoor(this);
+
+            }
+            if (next.isTrap()) {
+
+                current = this;
+                CollisionDetector collision = new CollisionDetector(this);
+                collision.detectTrapCollision((Trap)next);
+                this.health = collision.player.health;
+
+            }
+            if (next.isLife()) {
+
+                current = this;
+                CollisionDetector collision = new CollisionDetector(this);
+                collision.detectHPCollision((Health)next);
+                this.health = collision.player.health;
+
             }
         }
+
     }
 
 
@@ -179,6 +204,7 @@ public class Player extends Cell {
     }
     @Override
     public  Map<String,Cell> checkPlayerNeighbours(Cell thisCell){
+        System.out.println("Current->>"+current);
         Map<String,Cell> neighbours=new HashMap<>();
         //System.out.println(i+", "+j);
 
@@ -191,6 +217,16 @@ public class Player extends Cell {
         Cell west=w!=-1?BoardCells.cells.get(w):null;
         Cell north=n!=-1?BoardCells.cells.get(n):null;
         Cell south=s!=-1?BoardCells.cells.get(s):null;
+
+
+        /*
+        Cell east=e!=-1?BoardCells.path.get(e):null;
+        Cell west=w!=-1?BoardCells.path.get(w):null;
+        Cell north=n!=-1?BoardCells.path.get(n):null;
+        Cell south=s!=-1?BoardCells.path.get(s):null;
+        */
+
+
 
 
         if(north!=null)
@@ -209,16 +245,94 @@ public class Player extends Cell {
         System.out.println("Neighbours: "+neighbours);
         return neighbours;
     }
+    public void hitWall(Cell current,char dir){
+
+
+        switch (dir){
+            case 'N':{
+                current.getSpecialWalls()[0].hitWall(this);
+                System.out.println(current.getSpecialWalls()[0]);
+            }break;
+            case 'E':{
+                current.getSpecialWalls()[1].hitWall(this);
+                System.out.println(current.getSpecialWalls()[1]);
+            }break;
+            case 'S':{
+                current.getSpecialWalls()[2].hitWall(this);
+                System.out.println(current.getSpecialWalls()[2]);
+            }break;
+            case 'W':{
+                current.getSpecialWalls()[3].hitWall(this);
+                System.out.println(current.getSpecialWalls()[3]);
+            }break;
+            default:break;
+        }
+
+    }
     public boolean isWallEast(Cell next){
+        //checkWallType
         System.out.println("CheckWallAt East: "+current.checkWallAt("E")+" - "+"CheckWallAt West: "+current.checkWallAt("W"));
-        return (current.checkWallAt("E")&&next.checkWallAt("W"));
+        if(current.checkWallAt("E")!=null&&next.checkWallAt("W")!=null)
+        {
+            hitWall(current,'E');
+            return true;
+        }
+        else return false;
     }
     public boolean isWallNorth(Cell next){
-        return (current.checkWallAt("N")&&next.checkWallAt("S"));
+        if(current.checkWallAt("N")!=null&&next.checkWallAt("S")!=null)
+        {
+            hitWall(current,'N');
+            return true;
+        }
+        else return false;
     }
     public boolean isWallWest(Cell next){
-        return (current.checkWallAt("W")&&next.checkWallAt("E"));
+        if(current.checkWallAt("W")!=null&&next.checkWallAt("E")!=null)
+        {
+            hitWall(current,'W');
+            return true;
+        }
+        else return false;
+
     }public boolean isWallSouth(Cell next){
-        return (current.checkWallAt("S")&&next.checkWallAt("N"));
+        if(current.checkWallAt("S")!=null&&next.checkWallAt("N")!=null)
+        {
+            hitWall(current,'S');
+            return true;
+        }
+        else return false;
+
+    }
+    @Override
+    public void repaint(){
+        System.out.println("Player: 259: "+this);this.drawPlayer();
+    }
+    @Override
+    public void clear(){
+        gc.clearRect(getX(),getY(),getWidth(),getHeight());
+    }
+
+    public void takeDamage(int damage) {
+        this.health=(Math.max(this.health - damage, 0));
+        if(health<=0)clear();
+
+
+
+    }
+
+    public void addHealth(int life) {
+        this.health=(Math.max(this.health + life, 0));
+
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "health=" + health +
+
+                ", name='" + name + '\'' +
+
+                '}';
     }
 }

@@ -2,6 +2,7 @@ package Maze;
 
 import AbstractFactory.Maze;
 import AbstractFactory.Multiplayer.MultiplayerMazeFactory;
+import AbstractFactory.Survival.SurvivalMazeFactory;
 import AbstractFactory.TimeChallenge.TimeChallengeMazeFactory;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -27,15 +28,20 @@ public class GameScene  {
             maze=new Maze(new MultiplayerMazeFactory(),parent,2);
 
         }break;
+        case SURVIVAL:
+        {
+            maze=new Maze(new SurvivalMazeFactory(),parent,1);
+
+        }break;
         default:  maze=new Maze(new TimeChallengeMazeFactory(),parent,1);
 
     }
 
         Thread t=new Thread(maze);
     maze.createMaze();
-    Board board=new Board(maze.getGameBoard().getBoardWidth(),maze.getGameBoard().getBoardHeight(),maze.getGameBoard().getSizeFactor());
+    /*  Board board=new Board(maze.getGameBoard().getBoardWidth(),maze.getGameBoard().getBoardHeight(),maze.getGameBoard().getSizeFactor());
   //  board.setCellStack(maze.getGameBoard().getCellStack());
-        String message="";
+      String message="";
        message+=("\n");
        message+=("--------------------------------");
        message+=("\n");
@@ -51,10 +57,10 @@ public class GameScene  {
        message+=("\n");
         System.out.println(message);
        // JOptionPane.showMessageDialog(null,message,"AI Board vs Game Board",1);
-    new TestMaze(board);
+*/
 
         maze.initGame();
-    t.start();
+    t.start();//new TestMaze(board);
     //getScene(h,w);
     }
    /* public HBox navigation(){

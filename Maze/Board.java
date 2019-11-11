@@ -1,31 +1,35 @@
 package Maze;
 
+import Maze.ButtonFactory.Door;
 import inventory.Models.Inventory;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javafx.scene.canvas.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Stack;
 import java.util.UUID;
 
 public class Board extends StackPane implements Runnable
 {
     private Cell current;
-    private Stack<Cell> cellStack,virtualStack;
+    protected Stack<Cell> cellStack,virtualStack;
     private double height=500;
     private double width=500;
-    private int sizeFactor=100;
+    private int sizeFactor=60;
     private int columns,rows;
     private Canvas canvas;
     private boolean goal;
     //private ArrayList<Cell>cells=new ArrayList<>();
-    private GraphicsContext gc;
+    protected GraphicsContext gc;
     protected ArrayList<PlayerBoard> playerBoard=new ArrayList<>();
     protected ArrayList<Player> players=new ArrayList<>();
+    private ArrayList<Color> doorColors=new ArrayList<>();
 
     public Board(double height,double width,int sizeFactor){
         this.height=height;
@@ -36,17 +40,22 @@ public class Board extends StackPane implements Runnable
         virtualStack.addAll(cellStack);
         canvas=new Canvas(height,height);
 
-
+        this.width=width+20;
+        this.height=height+20;
         this.setHeight(height);
         this.setWidth(height);
         gc= canvas.getGraphicsContext2D();
+        MazeParts.graphicsContext=gc;
 
-        this.columns=(int)Math.floor(width/this.sizeFactor);
-        this.rows=(int)Math.floor(height/this.sizeFactor);
-        System.out.println(getHeight()+"-***-"+getWidth());
+        this.columns=(int)Math.floor(width/sizeFactor);
+        this.rows=(int)Math.floor(height/sizeFactor);
+        BoardCells.cols=this.columns;
+        BoardCells.rows=this.rows;
+        System.out.println(getHeight()+"--"+getWidth());
         setStyle("-fx-background-color:#111;-fx-margin:20px");
         initiate();
         current=BoardCells.cells.get(0);
+
 
         // playerBoard=new PlayerBoard(player,this);
 
@@ -87,7 +96,7 @@ public class Board extends StackPane implements Runnable
 
         this.columns=(int)Math.floor(width/sizeFactor);
         this.rows=(int)Math.floor(height/sizeFactor);
-      //  System.out.println(getHeight()+"--"+getWidth());
+        System.out.println(getHeight()+"--"+getWidth());
         setStyle("-fx-background-color:#111;-fx-margin:20px");
         initiate();
         current=BoardCells.cells.get(0);
@@ -131,6 +140,42 @@ public class Board extends StackPane implements Runnable
         this.rows = rows;
     }
 
+    public  Color generateRandomColor(){
+        Random randomGenerator = new Random();
+        int red = randomGenerator.nextInt(256);
+        int green = randomGenerator.nextInt(256);
+        int blue = randomGenerator.nextInt(256);
+
+        Color randomColor = Color.rgb(red,green,blue);
+        if(doorColors.indexOf(randomColor)==-1)doorColors.add(randomColor);
+        return randomColor;
+
+    }
+
+    public  void setDoors(int numOfDoors,int max){
+
+         max=(int)(sizeFactor/10)/2;
+        // numOfDoors=(int)(Math.random()*max);
+            while (numOfDoors > 0) {
+                System.out.println(numOfDoors);
+                int entry=(int)(Math.random()*cellStack.size());
+                int exit=(int)(Math.random()*cellStack.size());
+                if(exit==entry){
+                    exit=exit+(int)((Math.random()*cellStack.size()-2)+1)+2;
+                }
+                Cell c=cellStack.get(entry);
+                c.setGc(this.gc);
+                Color color=generateRandomColor();
+                BoardCells.cells.get(entry).changeColor(color);
+                BoardCells.cells.get(entry).setDoor(true,true);
+                BoardCells.cells.set(entry,new Door(c.getI(),c.getJ(),c.getWidth(),c.getHeight(), BoardCells.cells.get(exit),color));
+                numOfDoors--;
+            }
+
+
+
+    }
+
     public void isGoodMaze(){
         if(cellStack.lastElement().getI()>=(rows-1)/2&&cellStack.lastElement().getJ()>=(columns-1)/2){
 
@@ -163,6 +208,7 @@ public class Board extends StackPane implements Runnable
         getChildren().add(pb);
 
     }
+
 
     public Stack<Cell> getCellStack() {
         return cellStack;
@@ -212,6 +258,7 @@ public class Board extends StackPane implements Runnable
             for(int i=0;i<columns;i++){
                // System.out.println("i: "+i+" j: "+j);
                 Cell cell=new Cell(i,j,sizeFactor,sizeFactor);
+                cell.setSpecialWalls(attachWalls(.99));
 
                 cell.id=UUID.randomUUID().toString();//ids[i][j];//
                 cell.setColumns(columns);
@@ -234,13 +281,13 @@ public class Board extends StackPane implements Runnable
     }
     public void fillStack(){
         current.visited=true;
-      //  System.out.println("cellStack: "+cellStack.size());
-      //  System.out.println("board: "+(BoardCells.cells.size()-1));
-      //  System.out.println(BoardCells.emptyCells+" Empty cells left");
+        System.out.println("cellStack: "+cellStack.size());
+        System.out.println("board: "+(BoardCells.cells.size()-1));
+        System.out.println(BoardCells.emptyCells+" Empty cells left");
 
-      //  System.out.println("current: "+current);
+        System.out.println("current: "+current);
         Cell next=current.checkNeighbours();
-      //  System.out.println("Next: "+next);
+        System.out.println("Next: "+next);
 
         if(!cellExists(cellStack,current))
         {BoardCells.emptyCells--;}
@@ -258,7 +305,7 @@ public class Board extends StackPane implements Runnable
 
 
         }else if(virtualStack.size()>0){
-        //    System.out.println("Current: "+current);
+            System.out.println("Current: "+current);
             current=virtualStack.pop();
 
 
@@ -270,21 +317,26 @@ public class Board extends StackPane implements Runnable
             fillStack();
 
         }else{
-          //  System.out.println("No More empty cells");
+            System.out.println("No More empty cells");
+            BoardCells.path.addAll(cellStack);
+            setDoors(2,2);
             isGoodMaze();
         }
 
     }
     public void drawPath(int i){
-       // System.out.println(i+") Drawing "+cellStack.size()+" Cells: CellId - "+cellStack.get(i).id);
+        System.out.println(i+") Drawing "+cellStack.size()+" Cells: CellId - "+cellStack.get(i).id);
         cellStack.lastElement().hightlight(gc);
         cellStack.firstElement().isFirst=true;
         cellStack.lastElement().isEnd=true;
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+               if(cellStack.get(i).isDoor()){
+                   cellStack.get(i).drawDoor(gc);
+                }else
                 cellStack.get(i).drawRectangle(gc);
-                System.out.println(cellStack);
+            //    System.out.println(cellStack);
             }
         });
     }
@@ -303,24 +355,24 @@ public class Board extends StackPane implements Runnable
        // System.out.println("Remove wall at: "+x);
         //eastern neighbours
         if(x==1){
-            a.changeWallAt(3,false);
-            b.changeWallAt(1,false);
+            a.changeWallAt(3,null);
+            b.changeWallAt(1,null);
         }
         //western neighbours
         else if(x==-1){
-            a.changeWallAt(1,false);
-            b.changeWallAt(3,false);
+            a.changeWallAt(1,null);
+            b.changeWallAt(3,null);
         }
         int y=a.getJ()-b.getJ();
         //northern
         if(y==1){
-            a.changeWallAt(0,false);
-            b.changeWallAt(2,false);
+            a.changeWallAt(0,null);
+            b.changeWallAt(2,null);
         }
         //southern
         else if(y==-1){
-            a.changeWallAt(2,false);
-            b.changeWallAt(0,false);
+            a.changeWallAt(2,null);
+            b.changeWallAt(0,null);
         }
     }
     public void setSizeFactor(int size){
@@ -346,18 +398,48 @@ public class Board extends StackPane implements Runnable
             }
 
         }
+    }
 
-    }
-    public void unvisitNodes(){
-        for(Cell c:cellStack){
-            c.visited=false;
-        }
-    }
     public ArrayList<Player> getPlayers() {
         return players;
     }
 
     public int getSizeFactor() {
         return sizeFactor;
+    }
+    public Wall[] attachWalls(double chance){
+        Wall walls[]=new Wall[4];
+        double rand=Math.random()*(1.0-chance);
+        if(rand<=.25&&rand>=0){
+            //add Bombed wall
+            walls[0]=new BombedWall();
+
+        }
+        else   walls[0]=new NormalWall();
+
+        double rand1=Math.random()*(1.0-(chance/2));
+        if(rand1<=.25&&rand1>=0){
+            //add Bombed wall
+            walls[1]=new BombedWall();
+
+        }
+        else   walls[1]=new NormalWall();
+
+        double rand2=Math.random()*(1.0-(chance/3));
+        if(rand2<=.25&&rand2>=0){
+            //add Bombed wall
+            walls[2]=new BombedWall();
+
+        }
+        else   walls[2]=new NormalWall();
+
+        double rand3=Math.random()*(1.0-(chance/4));
+        if(rand3<=.25&&rand3>=0){
+            //add Bombed wall
+            walls[3]=new BombedWall();
+
+        }
+        else   walls[3]=new NormalWall();
+        return walls;
     }
 }

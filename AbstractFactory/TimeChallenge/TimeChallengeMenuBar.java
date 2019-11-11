@@ -54,4 +54,12 @@ public class TimeChallengeMenuBar extends MazeMenuBar {
         super.updateUI();
 
     }
+    @Override
+    public void updateHealth(Player p){
+        int pi=players.indexOf(p);
+        if(pi>-1)
+          //  heartBox.get(pi).updateHearts(p.getHealth());
+
+        super.updateHealth(p);
+    }
 }

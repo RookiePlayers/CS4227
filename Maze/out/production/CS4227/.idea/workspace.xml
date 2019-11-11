@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0491530a-1b1d-4253-b3a7-9b8c7bf03bda" name="Default Changelist" comment="" />
+    <list default="true" id="0491530a-1b1d-4253-b3a7-9b8c7bf03bda" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalLoseScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMenuBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalWinScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/ButtonFactory/Door.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/CollisionDetector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/Directions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/MazeParts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/PlayerObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/MazeMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/MazeMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/BoardCells.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/BoardCells.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/MazeSolver/MazeSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/MazeSolver/MazeSolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/PlayMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/PlayMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/TestMaze.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/TestMaze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Survival.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/BoardCells.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/BoardCells.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TestMaze.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TestMaze.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,20 +54,36 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1SnnbmP4GGs52nLrEtbs90tX7dL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AbstractFactory/Survival" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/AbstractFactory/Survival" />
+      <recent name="$PROJECT_DIR$/AbstractFactory" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="AbstractFactory" />
     </key>
@@ -46,7 +101,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Maze.Main" />
       <module name="CS4227" />
       <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../javafx-sdk-11.0.2/lib --add-modules=javafx.controls" />
@@ -81,7 +136,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Runner" />
       </list>
     </recent_temporary>
@@ -98,6 +152,19 @@
       <updated>1572208300483</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CS4227$Main.ic" NAME="Main Coverage Results" MODIFIED="1572220961742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

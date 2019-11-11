@@ -4,6 +4,7 @@ import AbstractFactory.MazeWinScene;
 import Maze.Board;
 import Maze.BoardCells;
 import Maze.Cell;
+import Maze.NormalWall;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -18,8 +19,9 @@ public class MazeSolver extends Canvas implements Runnable {
     private List<Cell> openList=new ArrayList<>();
     private int columns,rows;
     private List<Cell> closedList=new ArrayList<>();
-    private Stack<Cell>mazeGrid;
+    private Stack<Cell>mazeGrid=new Stack<>();
     private  Stack<Cell> path=new Stack<>();
+    private  Stack<Cell> bestPath=new Stack<>();
 
     private Cell now;
     private Cell goal,start;
@@ -30,20 +32,26 @@ public class MazeSolver extends Canvas implements Runnable {
         this.columns=columns;
         this.rows=rows;
         this.board=board;
+        setTranslateX(10);
+        setTranslateY(10);
         gc=this.getGraphicsContext2D();
         this.setHeight(board.getBoardHeight());
         this.setWidth(board.getBoardWidth());
-        mazeGrid=board.getCellStack();
-        goal=board.getCellStack().lastElement();
-        start=board.getCellStack().firstElement();
+
+        mazeGrid.addAll(board.getCellStack());
+        goal=mazeGrid.lastElement();
+        start=mazeGrid.firstElement();
         Thread t=new Thread(board);
         t.start();
         start.setgCosts(0);
 
         now=start;
-        setHeuristics();
+
+
+       setHeuristics();
         System.out.println("Heustics Aplied");
         findPathTo();
+       // findOptimalPath();
         System.out.println(this.path);
        ;
 
@@ -58,15 +66,17 @@ public class MazeSolver extends Canvas implements Runnable {
         }
     }
     public int calcHeuristic(Cell current){
-        double h=Math.sqrt(Math.pow((goal.getI()-current.getI()),2)+Math.pow((goal.getJ()-current.getJ()),2));
-        return (int)h;
+       // double h=Math.sqrt(Math.pow((goal.getI()-current.getI()),2)+Math.pow((goal.getJ()-current.getJ()),2));
+      //  return (int)h;
+        return manHanDistance( current);
 
     }
-    private double manHanDistance(int dx, int dy) {
+    private int manHanDistance(Cell current) {
 
-            return Math.abs(this.now.getI() + dx - goal.getI()) + Math.abs(this.now.getJ() + dy - goal.getJ()); // else return "Manhattan distance"
+            return Math.abs(current.getI() - goal.getI()) + Math.abs(current.getJ() - goal.getJ()); // else return "Manhattan distance"
 
     }
+
     public ArrayList<ArrayList<Cell>> checkPlayerNeighbours(Cell thisCell){
         //Hold All neighbours both bad and Good Neighbours get added to open bad added to close
         ArrayList<ArrayList<Cell>> neighbours=new ArrayList<>();
@@ -159,11 +169,24 @@ public class MazeSolver extends Canvas implements Runnable {
         }
         for (Cell c :
                 closedList) {
-            c.setColor(Color.GOLD);
+           // c.setColor(Color.GOLD);
             this.path.push(c);
 
         }
         return this.path;
+    }
+    private void findOptimalPath(){
+
+        this.bestPath=new Stack<>();
+        Cell temp=this.now;
+        Cell st=temp;
+        this.bestPath.push(temp);
+
+        while(temp.parent.id!=st.id){
+            this.bestPath.push(temp.parent);
+            temp=temp.parent;
+            System.out.println(start.id+"-- vs --"+temp.parent.id+"Match: "+temp.parent.id==start.id);
+        }
     }
     private boolean findNeighborInList(List<Cell> array, Cell node) {
         return array.stream().anyMatch((n) -> (n.id == node.id));
@@ -194,32 +217,78 @@ public class MazeSolver extends Canvas implements Runnable {
             return -1;
         return i+j*columns;
     }
+    //[NESW]
+    public void checkWallType(Cell current){
+         if(current.getSpecialWalls()[1] instanceof NormalWall){
+            //do nothing
+        }else if(current.getSpecialWalls()[1] instanceof NormalWall){
+             //bombed
+        }
+    }
     public boolean isWallEast(Cell current,Cell next){
+        //checkWallType
         System.out.println("CheckWallAt East: "+current.checkWallAt("E")+" - "+"CheckWallAt West: "+current.checkWallAt("W"));
-        return (current.checkWallAt("E")&&next.checkWallAt("W"));
+        if(current.checkWallAt("E")!=null&&next.checkWallAt("W")!=null)
+        {
+
+            return true;
+        }
+        else return false;
     }
     public boolean isWallNorth(Cell current,Cell next){
-        return (current.checkWallAt("N")&&next.checkWallAt("S"));
+        if(current.checkWallAt("N")!=null&&next.checkWallAt("S")!=null)
+        {
+            return true;
+        }
+        else return false;
     }
     public boolean isWallWest(Cell current,Cell next){
-        return (current.checkWallAt("W")&&next.checkWallAt("E"));
-    }public boolean isWallSouth(Cell current,Cell next){
-        return (current.checkWallAt("S")&&next.checkWallAt("N"));
-    }
+        if(current.checkWallAt("W")!=null&&next.checkWallAt("E")!=null)
+        {
+            return true;
+        }
+        else return false;
 
+    }public boolean isWallSouth(Cell current,Cell next){
+        if(current.checkWallAt("S")!=null&&next.checkWallAt("N")!=null)
+        {
+            return true;
+        }
+        else return false;
+
+    }
     public void drawPath(int i){
         System.out.println(i+") Drawing "+path.size()+" Cells:  "+path.get(i));
+
         //cellStack.lastElement().hightlight(gc);
         //cellStack.firstElement().isFirst=true;
         //cellStack.lastElement().isEnd=true;
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                if(i==path.size()-1)
+                    path.get(i).setColor(Color.GOLD);
+                else
+                path.get(i).setColor(Color.RED);
                 path.get(i).drawRectangle(gc);
+
                 System.out.println(path);
             }
         });
     }
+    private void drawBestPath(int i) {
+        System.out.println(i+") Drawing "+bestPath.size()+" Cells:  "+bestPath.get(i));
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                bestPath.get(i).setColor(Color.GOLD);
+                bestPath.get(i).drawRectangle(gc);
+                System.out.println(bestPath);
+            }
+        });
+    }
+    boolean part1=false;
     @Override
     public void run() {
         int i=0;
@@ -228,13 +297,31 @@ public class MazeSolver extends Canvas implements Runnable {
 
             try {
                 drawPath(i);
+                System.out.println("Parent:: "+path.get(0).parent);
                 i++;
 
-                Thread.sleep(1000);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
+        for(Cell c:path){
+            System.out.println("Parent:: "+c.parent);
+        }
+       int j=0;
+        System.out.println(this.bestPath.size());
+  while(j<this.bestPath.size()){
+            try {
+              //  drawBestPath(j);
+                j++;
+
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
 }

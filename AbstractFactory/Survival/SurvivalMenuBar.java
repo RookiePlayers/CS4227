@@ -1,4 +1,4 @@
-package AbstractFactory.Multiplayer;
+package AbstractFactory.Survival;
 
 import AbstractFactory.MazeMenuBar;
 import Maze.Heartbox;
@@ -7,31 +7,26 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class MultiplayerMenuBar extends MazeMenuBar {
+public class SurvivalMenuBar extends MazeMenuBar {
     Button time;
     private ArrayList<Heartbox> heartBox = new ArrayList<>();
-
-
-    public MultiplayerMenuBar(ArrayList<Player>players){
+    public SurvivalMenuBar(ArrayList<Player>players){
         super(players);
         VBox vbox=new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
 
-        Label lbl=new Label("Multiplayer  Maze");
+        Label lbl=new Label("Survival  Maze");
         lbl.setStyle("-fx-text-fill:white");
-        vbox.getChildren().addAll(lbl,optionsBar(),playersBox());
+        vbox.getChildren().addAll(lbl,optionsBar(),playerBox());
         getChildren().addAll(vbox);
         setAlignment(Pos.CENTER);
     }
@@ -43,17 +38,17 @@ public class MultiplayerMenuBar extends MazeMenuBar {
         Button inventoryBtn=new Button("Inventory");
         inventoryBtn.setAlignment(Pos.CENTER_LEFT);
 
-        this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
-        time.setAlignment(Pos.CENTER);
+          this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
+         time.setAlignment(Pos.CENTER);
         Button equipBtn=new Button("Equip");
         equipBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(time);
+        bar.getChildren().addAll(inventoryBtn,time,equipBtn);
 
 
         return bar;
 
     }
-    public HBox playersBox(){
+    public HBox playerBox(){
         HBox hbox=new HBox();
         hbox.setSpacing(50);
         hbox.setAlignment(Pos.CENTER);
@@ -80,6 +75,9 @@ public class MultiplayerMenuBar extends MazeMenuBar {
         vbox.getChildren().addAll(name,rectangle,hbox);
 
         return vbox;
+    }
+    public void checkHealth(){
+
     }
 
     @Override

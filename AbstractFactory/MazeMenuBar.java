@@ -29,4 +29,7 @@ public class MazeMenuBar extends HBox {
         this.timer = timer;
     }
     public void updateUI(){}
+
+    public void updateHealth(Player p) {
+    }
 }

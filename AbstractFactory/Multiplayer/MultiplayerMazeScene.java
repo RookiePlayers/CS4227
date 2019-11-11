@@ -11,4 +11,8 @@ public class MultiplayerMazeScene extends MazeScene {
         super(parent);
         super.timed=false;
     }
+    @Override
+    public void winLogic(){
+        //First Player Wins
+    }
 }

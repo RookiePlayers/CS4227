@@ -65,6 +65,15 @@ public class PlayMenu {
             parent.setScene(gameScene);
         });
         Button survival=new Button("Survival");
+        survival.setOnAction(e->{
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            GameScene game=new GameScene(parent,GameModes.SURVIVAL);
+            Scene gameScene=game.getScene(bounds.getHeight(),bounds.getWidth());
+            Navigation.update(gameScene);
+            parent.setScene(gameScene);
+        });
         vbox.setSpacing(10.0);
         vbox.setAlignment(Pos.CENTER);
 

@@ -13,7 +13,8 @@ import Maze.Navigation;
 import Maze.Scenes;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
+import Maze.MazeParts;
+import Maze.Player;
 import javax.swing.border.Border;
 
 public class Maze extends Pane implements  Runnable{
@@ -26,6 +27,7 @@ public class Maze extends Pane implements  Runnable{
     private Stage parent;
     private long timeLength=30000;
     public int controllers=0;
+    int deadPlayers=0;
 
     protected boolean gameOver=false;
 
@@ -55,6 +57,8 @@ public class Maze extends Pane implements  Runnable{
         this.winScene=factory.createWinScene(parent,new BorderPane(),timeLength,gameBoard.getPlayers());
         this.loseScene=factory.createLoseScene(parent,new BorderPane(),timeLength);
         this.mainScene=factory.createMazeScene(parent,new BorderPane());
+
+        MazeParts.currentMenubar=topMenu;
 
 
 
@@ -161,6 +165,17 @@ public class Maze extends Pane implements  Runnable{
                                Platform.runLater(()->parent.setScene(this.loseScene));
                            }
                        }
+                   }
+
+                   for(Player p:gameBoard.getPlayers())
+                   {
+                       if (p.getHealth()<=0)deadPlayers++;
+                   }
+                   if(deadPlayers>=gameBoard.getPlayers().size())
+                   {
+                       gameOver=true;
+                       this.loseScene.updateUI();
+                       Platform.runLater(()->parent.setScene(this.loseScene));
                    }
 
                     //if Goal is reached

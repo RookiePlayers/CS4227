@@ -14,6 +14,7 @@ public class TestMaze extends Stage {
     public TestMaze(Board board){
         this.board=board;
         ai=new MazeSolver(board,board.getRows(),board.getColumns());
+
         board.getChildren().add(ai);
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
@@ -47,6 +48,7 @@ public class TestMaze extends Stage {
         setScene(scene);
         show();
         //initModality(Modality.APPLICATION_MODAL);
+        //ai.findPathTo();
         t1.start();
     }
 }
