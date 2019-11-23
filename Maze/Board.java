@@ -21,7 +21,7 @@ public class Board extends StackPane implements Runnable
     protected Stack<Cell> cellStack,virtualStack;
     private double height=500;
     private double width=500;
-    private int sizeFactor=60;
+    private int sizeFactor=30;
     private int columns,rows;
     private Canvas canvas;
     private boolean goal;

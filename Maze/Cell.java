@@ -186,7 +186,7 @@ public  class Cell extends Rectangle implements  Comparable{
         setX(x);
         setY(y);
         // System.out.println("x: "+x+", y: "+y);
-        gc.setEffect(Effects.Inner_Shadow());
+      //  gc.setEffect(Effects.Inner_Shadow());
 
         gc.setFill(color);
         gc.setStroke(color);
@@ -196,7 +196,7 @@ public  class Cell extends Rectangle implements  Comparable{
                 getWidth(),
                 getHeight());
 
-        Image img=new Image(getClass().getResourceAsStream(this.entry?"Images/exit.png":"/Images/exit.png"));
+        Image img=new Image(getClass().getResourceAsStream(this.entry?"Images/exit.png":"Images/exit.png"));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
         gc.setEffect(null);
@@ -219,9 +219,9 @@ public  class Cell extends Rectangle implements  Comparable{
                     getY(),
                     getWidth(),
                     getHeight());
-            Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
+        //    Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
 
-            gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
+        //    gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
 
             ;
         }

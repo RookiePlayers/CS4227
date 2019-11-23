@@ -316,7 +316,7 @@ public class MazeSolver extends Canvas implements Runnable {
               //  drawBestPath(j);
                 j++;
 
-                Thread.sleep(500);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
