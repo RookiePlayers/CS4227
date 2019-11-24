@@ -1,5 +1,6 @@
 package Maze;
 
+import Facade.PlayerFacade;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class Trap extends Cell {
     @Override
     public void triggerTrap(Player player)
     {
-        player.takeDamage(damage);
+        player= new PlayerFacade(player).takeDamage(damage);//player.takeDamage(damage);
         destroyTrap(player.getGc());
     }
 }

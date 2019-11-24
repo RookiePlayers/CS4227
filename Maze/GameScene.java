@@ -41,22 +41,7 @@ public class GameScene  {
     maze.createMaze();
     /*  Board board=new Board(maze.getGameBoard().getBoardWidth(),maze.getGameBoard().getBoardHeight(),maze.getGameBoard().getSizeFactor());
   //  board.setCellStack(maze.getGameBoard().getCellStack());
-      String message="";
-       message+=("\n");
-       message+=("--------------------------------");
-       message+=("\n");
-       message+=(String.format("%-15s %-5s %-7s \n","Cat","AI Board","Game Board"));
-       message+=("-------------------------------\n");
-      message+=(String.format("%-15s %-5s %-7s \n","Height",board.getBoardHeight(),maze.getGameBoard().getBoardHeight()));
-       message+=(String.format("%-15s %-5s %-7s \n","Width",board.getBoardWidth(),maze.getGameBoard().getBoardWidth()));
-       message+=(String.format("%-15s %-5s %-7s \n","sizeFactor",board.getSizeFactor(),maze.getGameBoard().getSizeFactor()));
-       message+=(String.format("%-15s %-5s %-7s \n","Cells",board.getCellStack().size(),maze.getGameBoard().getCellStack().size()));
-       message+=(String.format("%-15s %-5s %-7s \n","Cols",board.getColumns(),maze.getGameBoard().getColumns()));
-       message+=(String.format("%-15s %-5s %-7s \n","Rows",board.getRows(),maze.getGameBoard().getRows()));
-       message+=("--------------------------------");
-       message+=("\n");
-        System.out.println(message);
-       // JOptionPane.showMessageDialog(null,message,"AI Board vs Game Board",1);
+
 */
 
         maze.initGame();

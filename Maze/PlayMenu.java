@@ -1,5 +1,6 @@
 package Maze;
 
+import Command.*;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -17,15 +18,27 @@ import javax.swing.border.Border;
 public class PlayMenu {
     private Scene scene;
     private Stage parent;
+
+
     public PlayMenu(Stage parent){
         this.parent=parent;
     }
+
     public HBox navigation(){
+        NavigationControl nControl= NavigationController.getNavigation();
+        PreviousScene previousScene=new PreviousScene(nControl);
+        previousScene.setText("◀");
+        NextScene nextScene=new NextScene(nControl);
+        nextScene.setText("▶");
+        ChangeScene changeScene=new ChangeScene(previousScene);
+        previousScene.setOnAction(e->{changeScene.press();parent.setScene(Navigation.ACTIVESCENE);});
+        nextScene.setOnAction(e->{changeScene.press();parent.setScene(Navigation.ACTIVESCENE);});
+
         HBox vbox=new HBox();
         Button backBtbn=new Button("◀");
         Button nextButton=new Button("▶");
         vbox.setSpacing(10);
-       vbox.getChildren().addAll(backBtbn,nextButton);
+       vbox.getChildren().addAll(previousScene,nextScene);
         backBtbn.setOnAction(e->{
             Navigation.previous();
             parent.setScene(Navigation.ACTIVESCENE);

@@ -1,6 +1,7 @@
-package Maze;
+package Facade;
 
 import AbstractFactory.MazeMenuBar;
+import Maze.*;
 
 public class CollisionDetector {
     public Player player;

@@ -1,5 +1,6 @@
 package Maze;
 
+import Command.PlayerCommand.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -14,12 +15,14 @@ public class PlayerBoard extends Canvas{
     public Cell currentPosition;
     //public Player player;
     public ArrayList<Player>players;
+    public ArrayList<ControllerCommand>controllerCommands=new ArrayList<>();
 
 
     private GraphicsContext game;
 
     public PlayerBoard(ArrayList<Player> player,Board board){
         this.players=player;
+
         this.b=board;
         this.setHeight(b.getBoardHeight());
         this.setWidth(b.getBoardWidth());
@@ -29,6 +32,7 @@ public class PlayerBoard extends Canvas{
         for(Player p:players){
             p.gc=game;
             drawPlayer(p);
+            controllerCommands.add(new ControllerCommand(p));
 
         }
 
@@ -57,29 +61,45 @@ public class PlayerBoard extends Canvas{
     }
     public void setupP1Controls(Player player, KeyEvent e){
 
+            Command commandPlayer=null;
+            controllerCommands.get(0).setTarget(player);
+
+
             switch (e.getCode()) {
                 case D: {
                     System.out.println("RIGHT");
-                    player.moveRight();
+                   // player.moveRight();
+                    commandPlayer=controllerCommands.get(0).getMovements()[3];
+
 
                 }
                 break;
                 case W: {
                     System.out.println("UP");
-                    player.moveUp();
+                   // player.moveUp();
+                    commandPlayer=controllerCommands.get(0).getMovements()[0];
                 }
                 break;
                 case A: {
                     System.out.println("LEFT");
-                    player.moveLeft();
+                   // player.moveLeft();
+                    commandPlayer=controllerCommands.get(0).getMovements()[1];
                 }
                 break;
                 case S: {
                     System.out.println("DOWN");
-                    player.moveDown();
+                   // player.moveDown();
+                    commandPlayer=controllerCommands.get(0).getMovements()[2];
                 }
                 break;
             }
+            PlayerTrigger playerTrigger;
+            if(commandPlayer!=null)
+            {
+                playerTrigger=new PlayerTrigger(commandPlayer);
+                playerTrigger.move();
+            }
+
             if(player.current==b.getCellStack().lastElement()){
                 b.setGoal(true);
                 player.setDone(true);
@@ -90,30 +110,46 @@ public class PlayerBoard extends Canvas{
     public void setupP2Controls(Player player, KeyEvent e){
 
 
-                switch (e.getCode()) {
-                case L: {
-                    System.out.println("RIGHT");
-                    player.moveRight();
+        Command commandPlayer=null;
+        controllerCommands.get(1).setTarget(player);
 
-                }
-                break;
-                case I: {
-                    System.out.println("UP");
-                    player.moveUp();
-                }
-                break;
-                case J: {
-                    System.out.println("LEFT");
-                    player.moveLeft();
-                }
-                break;
-                case K: {
-                    System.out.println("DOWN");
-                    player.moveDown();
-                }
-                break;
+
+        switch (e.getCode()) {
+            case L: {
+                System.out.println("RIGHT");
+                // player.moveRight();
+                commandPlayer=controllerCommands.get(1).getMovements()[3];
+
+
             }
-            if(player.current==b.getCellStack().lastElement()){
+            break;
+            case I: {
+                System.out.println("UP");
+                // player.moveUp();
+                commandPlayer=controllerCommands.get(1).getMovements()[0];
+            }
+            break;
+            case K: {
+                System.out.println("LEFT");
+                // player.moveLeft();
+                commandPlayer=controllerCommands.get(1).getMovements()[1];
+            }
+            break;
+            case J: {
+                System.out.println("DOWN");
+                // player.moveDown();
+                commandPlayer=controllerCommands.get(1).getMovements()[2];
+            }
+            break;
+        }
+        PlayerTrigger playerTrigger;
+        if(commandPlayer!=null)
+        {
+            playerTrigger=new PlayerTrigger(commandPlayer);
+            playerTrigger.move();
+        }
+
+        if(player.current==b.getCellStack().lastElement()){
                 b.setGoal(true);
                 player.setDone(true);
                 player.hightlight(game, Color.GOLD);

@@ -1,5 +1,7 @@
 package Maze;
 
+import Maze.Composite.NormalWall;
+import Maze.Composite.Wall;
 import inventory.controls.Effects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -186,17 +188,17 @@ public  class Cell extends Rectangle implements  Comparable{
         setX(x);
         setY(y);
         // System.out.println("x: "+x+", y: "+y);
-      //  gc.setEffect(Effects.Inner_Shadow());
+        gc.setEffect(Effects.Inner_Shadow());
 
         gc.setFill(color);
         gc.setStroke(color);
-       // gc.fillText("••••••••••",getX(),getY());
+        gc.fillText("••••••••••",getX(),getY());
         gc.fillRect(getX(),
                 getY(),
                 getWidth(),
                 getHeight());
 
-        Image img=new Image(getClass().getResourceAsStream(this.entry?"Images/exit.png":"Images/exit.png"));
+        Image img=new Image(getClass().getResourceAsStream(this.entry?"/Images/gate01.png":"/Images/exit.png"));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
         gc.setEffect(null);
@@ -211,17 +213,19 @@ public  class Cell extends Rectangle implements  Comparable{
         //x=40.0;
         setX(x);
         setY(y);
+
        // System.out.println("x: "+x+", y: "+y);
         if(this.visited&&!isEnd){
             gc.setFill(color);
             gc.setStroke(Color.TRANSPARENT);
-            gc.fillRect(getX(),
+            gc.fillRect(
+                    getX(),
                     getY(),
                     getWidth(),
                     getHeight());
-        //    Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
+            Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
 
-        //    gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
+            gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
 
             ;
         }
@@ -255,38 +259,48 @@ public  class Cell extends Rectangle implements  Comparable{
 
         if(this.specialWalls[0]!=null)
         {
-
-            gc.setStroke(this.specialWalls[0].getWallColor()); gc.setLineWidth(this.specialWalls[0].getWallWidth());
+            gc.setEffect(Effects.DROP_SHADOW());
+            gc.setStroke(this.specialWalls[0].getWallColor());
+            gc.setLineWidth(this.specialWalls[0].getWallWidth());
             gc.strokeLine(getX(),getY(),x+w,y);
             gc.setStroke(Color.TRANSPARENT);
-        }else {
+            gc.setEffect(null);
+        }else{
 
             gc.setStroke(Color.TRANSPARENT);
             gc.strokeLine(getX(),getY(),x+w,y);
         }
         if(this.specialWalls[1]!=null)
         {
-
-            gc.setStroke(this.specialWalls[1].getWallColor()); gc.setLineWidth(this.specialWalls[1].getWallWidth());
+            gc.setStroke(Color.TRANSPARENT);
+            gc.setEffect(Effects.DROP_SHADOW());
+            gc.setStroke(this.specialWalls[1].getWallColor());
+            gc.setLineWidth(this.specialWalls[1].getWallWidth());
             gc.strokeLine(getX()+w,getY(),x+w,y+w);
             gc.setStroke(Color.TRANSPARENT);
+            gc.setEffect(null);
         }else {
             gc.setStroke(Color.TRANSPARENT);
             gc.strokeLine(getX()+w,getY(),x+w,y+w);
         }
         if(this.specialWalls[2]!=null)
         {
+            gc.setEffect(Effects.DROP_SHADOW());
             gc.setStroke(this.specialWalls[2].getWallColor()); gc.setLineWidth(this.specialWalls[2].getWallWidth());
             gc.strokeLine(getX()+w,getY()+w,x,y+w);
             gc.setStroke(Color.TRANSPARENT);
+            gc.setEffect(null);
         }else  {
             gc.setStroke(Color.TRANSPARENT);
             gc.strokeLine(getX()+w,getY()+w,x,y+w);
         }
         if(this.specialWalls[3]!=null)
-        { gc.setStroke(this.specialWalls[3].getWallColor()); gc.setLineWidth(this.specialWalls[3].getWallWidth());
+        {
+            gc.setEffect(Effects.DROP_SHADOW());
+            gc.setStroke(this.specialWalls[3].getWallColor()); gc.setLineWidth(this.specialWalls[3].getWallWidth());
             gc.strokeLine(getX(),getY()+w,x,y);
             gc.setStroke(Color.TRANSPARENT);
+            gc.setEffect(null);
         }else  {
             gc.setStroke(Color.TRANSPARENT);
             gc.strokeLine(getX(),getY()+w,x,y);
@@ -505,5 +519,9 @@ public  class Cell extends Rectangle implements  Comparable{
     }
     public void triggerHealth(Player player){
 
+    }
+
+    public boolean getEntry() {
+        return entry;
     }
 }

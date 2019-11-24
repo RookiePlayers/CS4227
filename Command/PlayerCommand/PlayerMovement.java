@@ -1,11 +1,9 @@
-package Maze;
+package Command.PlayerCommand;
 
-public interface  Actor {
+public interface PlayerMovement {
+
     public void moveUp();
     public void moveDown();
     public void moveRight();
     public void moveLeft();
-    public void movePlayer(Directions dir,Cell next);
-
-
 }

@@ -1,5 +1,6 @@
-package Maze;
+package Maze.Composite;
 
+import Maze.Player;
 import javafx.scene.paint.Color;
 
 public interface Wall {

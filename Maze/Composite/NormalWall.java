@@ -1,19 +1,25 @@
-package Maze;
+package Maze.Composite;
 
+import Maze.Player;
 import javafx.scene.paint.Color;
 
-public class BombedWall implements  Wall {
-    private final Color wallColor=Color.RED;
-    private final double wallWidth=3.0;
+public class NormalWall implements Wall {
+    public boolean wall=true;
+    public final Color wallColor=Color.DARKGREEN.darker();
+    public final double wallWidth=2.0;
+
+    public NormalWall() {
+
+    }
 
     @Override
     public boolean isWall() {
-        return false;
+        return wall;
     }
 
     @Override
     public void setWall(boolean wall) {
-
+        this.wall=wall;
     }
 
     @Override
@@ -23,9 +29,7 @@ public class BombedWall implements  Wall {
 
     @Override
     public void hitWall(Player player) {
-        player.takeDamage(1);
-        CollisionDetector collision = new CollisionDetector(player);
-        collision.detectWallHit();
+        System.out.println(player.getName()+": You Hit normal Wall");
     }
 
     @Override
@@ -40,9 +44,8 @@ public class BombedWall implements  Wall {
 
     @Override
     public String toString() {
-        return "BombedWall{" +
-                "wallColor=" + wallColor +
-                ", wallWidth=" + wallWidth +
+        return "NormalWall{" +
+                "wall=" + wall +
                 '}';
     }
 }

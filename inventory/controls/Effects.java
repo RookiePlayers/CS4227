@@ -147,9 +147,9 @@ public class Effects {
      */
     public static DropShadow DROP_SHADOW() {
         DropShadow ds = new DropShadow();
-        ds.setColor(Color.GREY);
-        ds.setOffsetX(4.0f);
-        ds.setOffsetY(4.0f);
+        ds.setColor(Color.BLACK);
+        ds.setOffsetX(2.0f);
+        ds.setOffsetY(0.5f);
         return ds;
     }
 

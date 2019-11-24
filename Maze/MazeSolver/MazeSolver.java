@@ -1,10 +1,9 @@
 package Maze.MazeSolver;
 
-import AbstractFactory.MazeWinScene;
 import Maze.Board;
 import Maze.BoardCells;
 import Maze.Cell;
-import Maze.NormalWall;
+import Maze.Composite.NormalWall;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

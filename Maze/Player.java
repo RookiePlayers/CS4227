@@ -1,18 +1,15 @@
 package Maze;
 
+import Facade.CollisionDetector;
 import inventory.Models.Inventory;
 import inventory.controls.Effects;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player extends Cell {
+public class Player extends Cell implements Actor{
     private int health = 3;
     private long speed = 2000;
     private String name="Player 1";
@@ -105,6 +102,7 @@ public class Player extends Cell {
         gc.setEffect(null);
 
     }
+    @Override
     public void moveRight(){
         //Check Neighbour
 
@@ -114,6 +112,7 @@ public class Player extends Cell {
         movePlayer(Directions.EAST,next);
 
     }
+    @Override
     public void moveLeft(){
         //Check Neighbour
 
@@ -121,6 +120,7 @@ public class Player extends Cell {
         System.out.println("Neighbour is at: "+next);
         movePlayer(Directions.WEST,next);
     }
+    @Override
     public void moveUp(){
         //Check Neighbour
 
@@ -128,6 +128,7 @@ public class Player extends Cell {
         System.out.println("Neighbour is at: "+next);
         movePlayer(Directions.NORTH,next);
     }
+    @Override
     public void moveDown(){
         //Check Neighbour
 
@@ -135,6 +136,7 @@ public class Player extends Cell {
         System.out.println("Neighbour is at: "+next);
        movePlayer(Directions.SOUTH,next);
     }
+    @Override
     public void movePlayer(Directions dir,Cell next){
         boolean move=false;
         if(next!=null) {

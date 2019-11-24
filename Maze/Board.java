@@ -1,13 +1,12 @@
 package Maze;
 
+import Maze.Composite.BombedWall;
+import Maze.Composite.NormalWall;
+import Maze.Composite.Wall;
 import Maze.ButtonFactory.Door;
-import inventory.Models.Inventory;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import javafx.scene.canvas.*;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class Board extends StackPane implements Runnable
     protected Stack<Cell> cellStack,virtualStack;
     private double height=500;
     private double width=500;
-    private int sizeFactor=30;
+    private int sizeFactor=60;//reccomended 60
     private int columns,rows;
     private Canvas canvas;
     private boolean goal;
@@ -258,7 +257,11 @@ public class Board extends StackPane implements Runnable
             for(int i=0;i<columns;i++){
                // System.out.println("i: "+i+" j: "+j);
                 Cell cell=new Cell(i,j,sizeFactor,sizeFactor);
-                cell.setSpecialWalls(attachWalls(.99));
+                if(i==0||j==0||j==rows-1||i==columns-1){
+                    Wall[] walls=new Wall[]{new NormalWall(),new NormalWall(),new NormalWall(),new NormalWall()};
+                    cell.setSpecialWalls(walls);
+                }else
+                cell.setSpecialWalls(attachWalls(.40));
 
                 cell.id=UUID.randomUUID().toString();//ids[i][j];//
                 cell.setColumns(columns);
@@ -333,6 +336,7 @@ public class Board extends StackPane implements Runnable
             @Override
             public void run() {
                if(cellStack.get(i).isDoor()){
+                   System.out.println(cellStack.get(i).getEntry());
                    cellStack.get(i).drawDoor(gc);
                 }else
                 cellStack.get(i).drawRectangle(gc);

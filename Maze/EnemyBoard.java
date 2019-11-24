@@ -56,7 +56,7 @@ public class EnemyBoard extends Canvas implements Runnable{
         while(!enemy.caughtPlayer){
 
             try {
-                System.out.println("Player Caught? "+enemy.caughtPlayer+" -- "+enemy.path.size());
+                System.out.println("Player Path? + -- "+enemy.path.size());
                 System.out.println("Caught ? "+enemy.caughtPlayer);
                 if(enemy.path.size()>0){
                     System.out.println("Before: "+enemy);

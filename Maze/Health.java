@@ -1,5 +1,6 @@
 package Maze;
 
+import Facade.PlayerFacade;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.UUID;
@@ -25,7 +26,7 @@ public class Health extends Cell {
     @Override
     public void triggerHealth(Player player)
     {
-        player.addHealth(life);
+       player= new PlayerFacade(player).addHealth(life);//player.addHealth(life);
         addLife(player.getGc());
     }
 }
