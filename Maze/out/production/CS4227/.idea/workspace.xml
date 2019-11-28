@@ -2,58 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0491530a-1b1d-4253-b3a7-9b8c7bf03bda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AbstractFactory/AI/AstarInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AbstractFactory/AI/enemyAI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Maze/GameSetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Maze/MazePreference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AbstractFactory/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Maze.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/MazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/MazeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerMazeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/ChangeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/ChangeScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/ICommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/NavigationControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/INavigationControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/NextScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/NextScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/ICommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/ControllerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/ControllerCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveDown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveLeft.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveLeft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveRight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveRight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveUP.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveUP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MovementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MovementType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/PlayerMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/IPlayerMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/PlayerTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/PlayerTrigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/WASDMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/WASDMovementI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/PreviousScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PreviousScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/SceneNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/SceneINavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Composite/BombedWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Composite/BombedWall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Composite/NormalWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Composite/NormalWall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Composite/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Composite/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/EnemyBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/EnemyBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/MazeSolver/MazeSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/MazeSolver/MazeSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/PlayMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/PlayMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/PlayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/PlayerBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntMenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Maze.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Maze.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerMazeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerMazeFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayerBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayerBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Navigation.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Navigation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TestMaze.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TestMaze.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,10 +42,14 @@
     </option>
   </component>
   <component name="ProjectId" id="1SnnbmP4GGs52nLrEtbs90tX7dL" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AbstractFactory/Survival" />
+    <property name="extract.method.default.visibility" value="public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AbstractFactory/TreasureHunt" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -101,12 +58,14 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Maze" />
+      <recent name="AbstractFactory.TreasureHunt" />
       <recent name="AbstractFactory" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/AbstractFactory/TreasureHunt" />
       <recent name="$PROJECT_DIR$/AbstractFactory/Survival" />
       <recent name="$PROJECT_DIR$/AbstractFactory" />
     </key>
@@ -195,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574584225844</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update 1.2.0">
+      <created>1574943860045</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574943860045</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,37 +178,38 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Completed &#10;&#10;Maze Generation&#10;A*&#10;&#10;Implemented&#10;&#10;Abstract Factory &#10;Facade&#10;Composite&#10;Command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed &#10;&#10;Maze Generation&#10;A*&#10;&#10;Implemented&#10;&#10;Abstract Factory &#10;Facade&#10;Composite&#10;Command" />
+    <MESSAGE value="update 1.2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 1.2.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Maze/Enemy.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Maze/GameScene.java</url>
-          <line>76</line>
+          <line>89</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/Maze/Player.java</url>
-          <line>131</line>
-          <properties class="Maze.Player" method="moveDown">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/Maze/Player.java</url>
-          <line>139</line>
-          <properties class="Maze.Player" method="movePlayer">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="6" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntBoard.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Maze/Board.java</url>
+          <line>251</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

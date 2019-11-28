@@ -1,6 +1,10 @@
 package AbstractFactory.TreasureHunt;
 
 import AbstractFactory.MazeMenuBar;
+import Command.ChangeScene;
+import Command.INavigationControl;
+import Command.NavigationController;
+import Command.PreviousScene;
 import Maze.Heartbox;
 import Maze.MazeGameSettings;
 import Maze.Player;
@@ -63,12 +67,24 @@ public class TreasureHuntMenuBar extends MazeMenuBar {
         item4.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/diamond.png"),50, 50, false, false)),new Label("1600 points"));
         item5.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/crown.png"),50, 50, false, false)),new Label("2500 points"));
 
-        items.getChildren().addAll(playerBox(),item1,item2,item3,item4,item5);
+
         VBox b=new VBox();
         b.setAlignment(Pos.CENTER);
 
+
         b.setSpacing(20);
         b.getChildren().addAll(this.pointsBtn,new Label("Points to gather: "+ MazeGameSettings.preference.getTreasureGoal()));
+
+        bar.setSpacing(10);
+        INavigationControl nControl= NavigationController.getNavigation();
+        PreviousScene previousScene=new PreviousScene(nControl);
+        previousScene.setText("Exit");
+        ChangeScene changeScene=new ChangeScene(previousScene);
+        previousScene.setOnAction(e->{changeScene.press();});
+
+        solutionBtn=new Button("Solution");
+        solutionBtn.setAlignment(Pos.CENTER_RIGHT);
+        items.getChildren().addAll(playerBox(),item1,item2,item3,item4,item5,solutionBtn);
         bar.getChildren().addAll(items,b,message);
 
 

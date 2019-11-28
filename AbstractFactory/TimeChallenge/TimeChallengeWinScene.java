@@ -1,6 +1,7 @@
 package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.MazeWinScene;
+import Leaderboard.Models.Leaderboard;
 import Maze.Navigation;
 import Maze.Player;
 import javafx.application.Platform;
@@ -60,6 +61,17 @@ public class TimeChallengeWinScene extends MazeWinScene {
         actions.setAlignment(Pos.CENTER);
         actions.setSpacing(10);
         Button saveScore=new Button("Save Score");
+        saveScore.setOnAction(e->{
+            Leaderboard leaderboard = new Leaderboard("item_hunt_leaderboard.txt");
+
+                      /*  name = nameField.getText();
+                        this.player.setName(name);
+                        leaderboard.saveToLeaderBoard("time_challenge_leaderboard.txt", name, ((maze.getPgem() * 100) + (maze.getGgem() * 200) + (maze.getBgem() * 500) - Long.parseLong(timer.toString())) + " point(s)", maze.getTitle());
+                        save.setDisable(true);*/
+
+
+
+        });
         Button leaderboard=new Button("Leaderboard");
         actions.getChildren().addAll(saveScore,leaderboard);
         vbox.setSpacing(20);

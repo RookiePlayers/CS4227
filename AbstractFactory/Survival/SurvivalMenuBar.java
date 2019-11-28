@@ -50,7 +50,7 @@ public class SurvivalMenuBar extends MazeMenuBar {
         time.setAlignment(Pos.CENTER);
          solutionBtn=new Button("Solution");
         solutionBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(previousScene,time,solutionBtn);
+        bar.getChildren().addAll(time,solutionBtn);
 
 
 

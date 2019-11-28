@@ -285,7 +285,7 @@ public class GameSetting{
         p1.getChildren().remove(1);
         Slider slider=new Slider();
         slider.setValue(preference.getWallDifficulty());
-        p1.getChildren().add(new Label("Trap Wall Probability"));
+        p1.getChildren().add(new Label("Trap Wall Safety"));
         p1.getChildren().add(slider);
 
         VBox p2=preferenceVBox(traps,"Traps");

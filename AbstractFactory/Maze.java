@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import Maze.Board;
 import Maze.Navigation;
 import Maze.Scenes;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import Maze.MazeParts;
@@ -111,8 +112,10 @@ public class Maze extends Pane implements  Runnable{
        gameBoard.setBoardHeight(bh);
        gameBoard.setBoardWidth(bw);
         boardContainer.setCenter(gameBoard);
-        border.setCenter(boardContainer);
-        border.setBottom(bottom());
+        StackPane stackPane=new StackPane();
+       stackPane.getChildren().addAll(boardContainer,bottom());
+        border.setCenter(stackPane);
+        //border.setBottom(bottom());
         border.setStyle("-fx-background-color:black;-fx-padding:30px");
         return border;
     }
@@ -146,6 +149,7 @@ public class Maze extends Pane implements  Runnable{
         Button homeButton=new Button("\u2302");
         Button nextButton=new Button("▶");
         options.setSpacing(10);
+        options.setAlignment(Pos.TOP_LEFT);
 
         backBtbn.setOnAction(e-> {
             Navigation.previous();
