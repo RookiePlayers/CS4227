@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public abstract class MazeWinScene extends Scene {
 
     protected long timer=0;
+    protected long points=0;
     protected ArrayList<Player>players;
     protected Player Winner;
     public long getTimer() {
@@ -18,7 +19,16 @@ public abstract class MazeWinScene extends Scene {
     public void setTimer(long timer) {
         this.timer = timer;
     }
-    public MazeWinScene(Parent parent,ArrayList<Player>players) {
+
+    public long getPoints() {
+        return points;
+    }
+
+    public void setPoints(long points) {
+        this.points = points;
+    }
+
+    public MazeWinScene(Parent parent, ArrayList<Player>players) {
         super(parent);
         this.players=players;
     }

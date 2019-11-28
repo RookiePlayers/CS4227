@@ -3,7 +3,7 @@ package AbstractFactory.Multiplayer;
 import AbstractFactory.*;
 import AbstractFactory.Multiplayer.*;
 import Maze.Board;
-import Maze.Player;
+import Maze.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,8 +18,8 @@ public class MultiplayerMazeFactory implements MazeFactory {
         }
 
         @Override
-        public Board createBoard(double height, double width,int controllers) {
-            return new MultiplayerBoard(height,width,controllers) ;
+        public Board createBoard(double height, double width,int controllers,MazePreference preference) {
+            return new MultiplayerBoard(height,width,controllers,preference) ;
         }
 
         @Override

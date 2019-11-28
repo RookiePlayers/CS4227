@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Enemy extends Cell {
     public boolean caughtPlayer;
-    private int health = 1;
+    private int damage = 1;
     private long speed = 2000;
     private String name="Enemy 1";
     private Color color=Color.RED;
@@ -23,6 +23,17 @@ public class Enemy extends Cell {
     private List<Cell> closedList=new ArrayList<>();
     public Stack<Cell> path=new Stack<>();
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setSpeed(long speed) {
+        this.speed = speed;
+    }
 
     public Enemy(int i, int j, double h, double w) {
         super(i, j, h, w);
@@ -39,6 +50,8 @@ public class Enemy extends Cell {
         }
     }
     public int calcHeuristic(Cell current){
+        System.out.println("calculating hur..."+player);
+
         double h=Math.sqrt(Math.pow((player.getI()-current.getI()),2)+Math.pow((player.getJ()-current.getJ()),2));
         return (int)h;
 
@@ -128,7 +141,7 @@ public class Enemy extends Cell {
     }
     public Stack<Cell> trackPlayer() {
         System.out.println("Setting AI Path");
-        resetCurrentPath();
+        //resetCurrentPath();
         System.out.println("Setting AI Path");
         System.out.println("FIND PATH TO GOAL");
         this.closedList.add(current);
@@ -139,7 +152,7 @@ public class Enemy extends Cell {
     int o=0;
         while (current.getI()!=this.player.getI()&&current.getJ() != this.player.getJ()) {
             if (this.openList.isEmpty()) { // Nothing to examine
-                return null;
+                break;
             }
             current = this.openList.get(0); // get first node (lowest f score)
             this.openList.remove(0); // remove it
@@ -148,10 +161,14 @@ public class Enemy extends Cell {
             addNeigborsToOpenList();
             System.out.println(o);
         }
+        System.out.println("All Cells");
         for (Cell c :closedList)
-
+        {
+            System.out.println(c);
             this.path.push(c);
+        }
 
+        System.out.println("Path determined: \n"+this.path);
 
 
         return this.path;
@@ -210,6 +227,10 @@ public class Enemy extends Cell {
                 getWidth(),
                 getHeight());
 
+    }
+    @Override
+    public void clear(){
+        gc.clearRect(getX(),getY(),getWidth(),getHeight());
     }
 
     public long getSpeed() {

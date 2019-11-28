@@ -4,34 +4,34 @@ import Maze.Actor;
 
 public class ControllerCommand
 {
-    private PlayerMovement playerMovement;
-    private Command movements[];
+    private IPlayerMovement IPlayerMovement;
+    private ICommand movements[];
 
     public ControllerCommand(Actor target) {
-        playerMovement= MovementType.getWASD(target);
-        movements=new Command[]{
-                new MoveUP(playerMovement),
-                new MoveLeft(playerMovement),
-                new MoveDown(playerMovement),
-                new MoveRight(playerMovement)};
+        IPlayerMovement = MovementType.getWASD(target);
+        movements=new ICommand[]{
+                new MoveUP(IPlayerMovement),
+                new MoveLeft(IPlayerMovement),
+                new MoveDown(IPlayerMovement),
+                new MoveRight(IPlayerMovement)};
         this.target = target;
     }
 
     private Actor target;
 
-    public PlayerMovement getPlayerMovement() {
-        return playerMovement;
+    public IPlayerMovement getIPlayerMovement() {
+        return IPlayerMovement;
     }
 
-    public void setPlayerMovement(PlayerMovement playerMovement) {
-        this.playerMovement = playerMovement;
+    public void setIPlayerMovement(IPlayerMovement IPlayerMovement) {
+        this.IPlayerMovement = IPlayerMovement;
     }
 
-    public Command[] getMovements() {
+    public ICommand[] getMovements() {
         return movements;
     }
 
-    public void setMovements(Command[] movements) {
+    public void setMovements(ICommand[] movements) {
         this.movements = movements;
     }
 

@@ -1,7 +1,7 @@
 package Maze;
 
-import Maze.Composite.NormalWall;
-import Maze.Composite.Wall;
+import Composite.NormalWall;
+import Composite.Wall;
 import inventory.controls.Effects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -36,6 +36,8 @@ public  class Cell extends Rectangle implements  Comparable{
     public boolean visited=false;
     private Color color=Color.BLUEVIOLET;
     protected GraphicsContext gc;
+    private boolean shield=false;
+    private boolean item=false;
 
     public boolean isLife() {
         return life;
@@ -65,6 +67,10 @@ public  class Cell extends Rectangle implements  Comparable{
 
     public boolean isTrap() {
         return isTrap;
+    }
+
+    public boolean isItem() {
+        return item;
     }
 
     public void setTrap(boolean trap) {
@@ -165,6 +171,8 @@ public  class Cell extends Rectangle implements  Comparable{
         //x=40.0;
         setX(x);
         setY(y);
+        drawWalls(gc,x,y);
+
         Image img=new Image(getClass().getResourceAsStream("/Images/trap.png"));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
@@ -175,10 +183,33 @@ public  class Cell extends Rectangle implements  Comparable{
         //x=40.0;
         setX(x);
         setY(y);
+        drawWalls(gc,x,y);
+
         Image img=new Image(getClass().getResourceAsStream("/Images/heart.png"));
 
 
         gc.drawImage(img,getX(),getY(),getWidth()*.7,getHeight()*.7);
+    }
+    public void drawItem(GraphicsContext gc,Item it) {
+        double x=this.i*w;
+        double y=this.j*w;
+        //x=40.0;
+        setX(x);
+        setY(y);
+        gc.fillRect(
+                getX(),
+                getY(),
+                getWidth(),
+                getHeight());
+        Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
+
+        gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
+        drawWalls(gc,x,y);
+
+        Image img1=new Image(getClass().getResourceAsStream("/Images/"+it.url));
+
+
+        gc.drawImage(img1,getX(),getY(),getWidth(),getHeight());
     }
     public void drawDoor(GraphicsContext gc){
 
@@ -201,6 +232,27 @@ public  class Cell extends Rectangle implements  Comparable{
         Image img=new Image(getClass().getResourceAsStream(this.entry?"/Images/gate01.png":"/Images/exit.png"));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
+        gc.setEffect(null);
+    }
+    public void drawShield(GraphicsContext gc){
+
+        double x=this.i*(w);
+        double y=this.j*(w);
+        //x=40.0;
+        setX(x);
+        setY(y);
+        // System.out.println("x: "+x+", y: "+y);
+        gc.setEffect(Effects.GLOW(23.0));
+
+        gc.setFill(Color.LIGHTBLUE);
+
+
+        gc.fillOval(getX(),
+                getY(),
+                getWidth(),
+                getHeight());
+
+
         gc.setEffect(null);
     }
 
@@ -239,7 +291,7 @@ public  class Cell extends Rectangle implements  Comparable{
 
         }
          if(isFirst){
-            gc.setFill(Color.RED);
+            gc.setFill(Color.BLACK);
             gc.setStroke(Color.TRANSPARENT);
             gc.fillRect(getX(),
                     getY(),
@@ -247,16 +299,16 @@ public  class Cell extends Rectangle implements  Comparable{
                     getHeight());
 
         }
+         if(isEnd){
+             Image img=new Image(getClass().getResourceAsStream("/Images/finish.png"));
 
-       // gc.setStroke(Color.RED); gc.setLineWidth(2);*/
-        //gc.setFill(Color.WHITESMOKE);
+             gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
+         }
+         drawWalls(gc,x,y);
 
-       // gc.strokeRect(getX(),
-         //       getY(),
-          //      getWidth(),
-         //       getHeight());
-      //  System.out.println("N: "+this.walls[0]+"\nE: "+this.walls[1]+"\nS: "+this.walls[2]+"\nW: "+this.walls[3]);
 
+    }
+    public void drawWalls(GraphicsContext gc,double x,double y){
         if(this.specialWalls[0]!=null)
         {
             gc.setEffect(Effects.DROP_SHADOW());
@@ -305,14 +357,6 @@ public  class Cell extends Rectangle implements  Comparable{
             gc.setStroke(Color.TRANSPARENT);
             gc.strokeLine(getX(),getY()+w,x,y);
         }
-        //gc.setStroke(Color.WHITE);
-       // gc.strokeText(id, getX(), getY()+w);
-       //
-       //
-       // gc.stroke();
-
-
-
     }
 
     public boolean[] getWalls() {
@@ -436,7 +480,7 @@ public  class Cell extends Rectangle implements  Comparable{
         double y=this.j*w;
         setX(x);
         setY(y);
-        gc.setEffect(Effects.Inner_Shadow());
+        gc.setEffect(Effects.GLOW(23));
 
         gc.setFill(Color.BLUE);
         gc.setStroke(Color.TRANSPARENT);
@@ -444,6 +488,9 @@ public  class Cell extends Rectangle implements  Comparable{
                 getY(),
                 getWidth(),
                 getHeight());gc.setEffect(null);
+       /* Image img=new Image(getClass().getResourceAsStream("/Images/finish.jpg"));
+
+        gc.drawImage(img,getX(),getY(),getWidth(),getHeight());*/
     }
     public void hightlight(GraphicsContext gc,Color color) {
         double x=this.i*w;
@@ -459,10 +506,13 @@ public  class Cell extends Rectangle implements  Comparable{
                 getWidth(),
                 getHeight());
 
+        drawWalls(gc,x,y);
+
 
     }
 
 
+    public  void drawPlayer(){}
     public int getgCosts() {
         return gCosts;
     }
@@ -490,10 +540,13 @@ public  class Cell extends Rectangle implements  Comparable{
     }
 
 
+    public boolean isShield() {
+        return shield;
+    }
 
     @Override
     public String toString(){
-        return "{Cell: "+id+"(x = "+i+",y = "+j+") -> Walls: "+ Arrays.toString(this.walls) +" Door: " + isDoor + " Trap: "+isTrap+"-> Neighbours: "+"}\n";
+        return "{Cell: "+id+"(x = "+i+",y = "+j+") -> Walls: "+ Arrays.toString(this.specialWalls) +" Door: " + isDoor + " Trap: "+isTrap+"-> Neighbours: "+"}\n";
     }
 
     public void setParent(Cell parent) {
@@ -520,8 +573,22 @@ public  class Cell extends Rectangle implements  Comparable{
     public void triggerHealth(Player player){
 
     }
+    public void triggerShield(Player player){
+
+    }
+    public void triggerItem(Player player){}
 
     public boolean getEntry() {
         return entry;
     }
+
+    public void setShield(boolean b) {
+        this.shield=b;
+    }
+
+    public void setItem(boolean b) {
+        this.item=b;
+    }
+
+
 }

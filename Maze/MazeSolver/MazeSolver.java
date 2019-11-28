@@ -3,7 +3,7 @@ package Maze.MazeSolver;
 import Maze.Board;
 import Maze.BoardCells;
 import Maze.Cell;
-import Maze.Composite.NormalWall;
+import Composite.NormalWall;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -31,8 +31,8 @@ public class MazeSolver extends Canvas implements Runnable {
         this.columns=columns;
         this.rows=rows;
         this.board=board;
-        setTranslateX(10);
-        setTranslateY(10);
+        //setTranslateX(10);
+       // setTranslateY(10);
         gc=this.getGraphicsContext2D();
         this.setHeight(board.getBoardHeight());
         this.setWidth(board.getBoardWidth());
@@ -156,7 +156,7 @@ public class MazeSolver extends Canvas implements Runnable {
         addNeigborsToOpenList();
 
 
-        while (this.now.id != this.goal.id) {
+        while (!this.now.id.equals(this.goal.id)) {
             if (this.openList.isEmpty()) { // Nothing to examine
                 return null;
             }
@@ -166,13 +166,31 @@ public class MazeSolver extends Canvas implements Runnable {
             System.out.println("CLOSED LIST: "+this.closedList);
             addNeigborsToOpenList();
         }
+       // this.path.add(0, this.now);
+
         for (Cell c :
                 closedList) {
            // c.setColor(Color.GOLD);
             this.path.push(c);
+            System.out.println("Paent -> "+c.parent.id+" Child: "+c.id);
 
         }
+        this.bestPath.add(0, this.now);
+       // while (!this.now.id.equals(this.start.id)) {
+       //     System.out.println(">>"+this.now.id+" v "+this.start.id +" Parent: "+this.now.parent.id);
+          //  this.now = this.now.parent;
+       //     this.bestPath.add(0, this.now);
+       // }
         return this.path;
+    }
+    private void removeDuplicates(){
+        List<Cell>newList=new ArrayList<>();
+        for(Cell c:closedList){
+            for(Cell cell:closedList)
+            {
+
+            }
+        }
     }
     private void findOptimalPath(){
 
@@ -269,7 +287,7 @@ public class MazeSolver extends Canvas implements Runnable {
                     path.get(i).setColor(Color.GOLD);
                 else
                 path.get(i).setColor(Color.RED);
-                path.get(i).drawRectangle(gc);
+                path.get(i).hightlight(gc,Color.GOLD);
 
                 System.out.println(path);
             }
@@ -281,23 +299,24 @@ public class MazeSolver extends Canvas implements Runnable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                bestPath.get(i).setColor(Color.GOLD);
-                bestPath.get(i).drawRectangle(gc);
+                bestPath.get(i).setColor(Color.PURPLE);
+                bestPath.get(i).hightlight(gc,Color.PURPLE);
                 System.out.println(bestPath);
             }
         });
     }
     boolean part1=false;
+    public int DRAWCOUNTER=0;
     @Override
     public void run() {
-        int i=0;
+
         //i<cellStack.size()
-        while(i<this.path.size()){
+        while(DRAWCOUNTER<this.path.size()){
 
             try {
-                drawPath(i);
+                drawPath(DRAWCOUNTER);
                 System.out.println("Parent:: "+path.get(0).parent);
-                i++;
+                DRAWCOUNTER++;
 
                 Thread.sleep(50);
             } catch (InterruptedException e) {
@@ -312,7 +331,7 @@ public class MazeSolver extends Canvas implements Runnable {
         System.out.println(this.bestPath.size());
   while(j<this.bestPath.size()){
             try {
-              //  drawBestPath(j);
+                drawBestPath(j);
                 j++;
 
                 Thread.sleep(2000);
@@ -323,4 +342,17 @@ public class MazeSolver extends Canvas implements Runnable {
     }
 
 
+    public void clear() {
+        for(Cell c:this.path){
+            c.clear();
+            c.drawRectangle(gc);
+        }
+    }
+
+    public void show() {
+        for(Cell c:this.path){
+            c.clear();
+            c.hightlight(gc,Color.GOLD);
+        }
+    }
 }

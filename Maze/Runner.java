@@ -9,7 +9,7 @@ public class Runner extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        Board board=new Board(800,800,60);
+        Board board=new Board(800,800);
       new TestMaze(board);
 
     }

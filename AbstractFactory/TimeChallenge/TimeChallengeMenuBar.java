@@ -1,7 +1,10 @@
 package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.MazeMenuBar;
+import Command.*;
+import Maze.Navigation;
 import Maze.Player;
+import Maze.TestMaze;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 
 public class TimeChallengeMenuBar extends MazeMenuBar {
     Button time;
+    //Button solutionBtn;
     public TimeChallengeMenuBar(ArrayList<Player>players){
         super(players);
         VBox vbox=new VBox();
@@ -31,14 +35,21 @@ public class TimeChallengeMenuBar extends MazeMenuBar {
         bar.setAlignment(Pos.CENTER);
 
         bar.setSpacing(20);
-        Button inventoryBtn=new Button("Inventory");
-        inventoryBtn.setAlignment(Pos.CENTER_LEFT);
+        INavigationControl nControl= NavigationController.getNavigation();
+        PreviousScene previousScene=new PreviousScene(nControl);
+        previousScene.setText("Exit");
+        ChangeScene changeScene=new ChangeScene(previousScene);
+        previousScene.setOnAction(e->{changeScene.press();});
 
           this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
          time.setAlignment(Pos.CENTER);
-        Button equipBtn=new Button("Equip");
-        equipBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(inventoryBtn,time,equipBtn);
+         solutionBtn=new Button("Solution");
+        solutionBtn.setAlignment(Pos.CENTER_RIGHT);
+        bar.getChildren().addAll(previousScene,time,solutionBtn);
+
+
+
+
 
 
         return bar;

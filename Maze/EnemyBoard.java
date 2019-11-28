@@ -44,25 +44,37 @@ public class EnemyBoard extends Canvas implements Runnable{
 
 
     }
-    public void startAi(){
+    synchronized public void startAi(){
         System.out.println("Starting AI");
         enemy.path=enemy.trackPlayer();
+        System.out.println("AI init");
+        System.out.println(enemy.path);
 
     }
     @Override
     public void run(){
         int i=0;
 
-        while(!enemy.caughtPlayer){
-
+        while(!enemy.caughtPlayer&& MazeGameSettings.ENEMYTHREADON){
+            i+=1000;
             try {
+
                 System.out.println("Player Path? + -- "+enemy.path.size());
                 System.out.println("Caught ? "+enemy.caughtPlayer);
                 if(enemy.path.size()>0){
                     System.out.println("Before: "+enemy);
-                    enemy=(Enemy)enemy.path.pop();
+                    Cell temp=enemy.path.pop();
+                    enemy.clear();
+                    enemy.setI(temp.getI());
+                    enemy.setJ(temp.getJ());
                     System.out.println("After: "+enemy);
                     enemy.drawEnemy();
+                    enemy.trackPlayer();
+                    if(i%5000==0){
+                        System.out.println("Reload");
+                        enemy.resetCurrentPath();
+                        enemy.trackPlayer();
+                    }
                 }
 
 

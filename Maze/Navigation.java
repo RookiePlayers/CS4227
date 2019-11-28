@@ -17,12 +17,15 @@ public class Navigation {
         ACTIVESCENE=initScene;
     }
     public static void update(Scene newScene){
+
         CURRENTSCENE.push(newScene);
         PREVIOUSSCENE.push(ACTIVESCENE);
         ACTIVESCENE=newScene;
 
     }
     public static void previous(){
+        MazeGameSettings.MAINTHREADON=false;
+        MazeGameSettings.ENEMYTHREADON=false;
         ACTIVESCENE=PREVIOUSSCENE.lastElement();
         RECENTSCENE=CURRENTSCENE.lastElement();
         CURRENTSCENE.push(ACTIVESCENE);
@@ -30,6 +33,8 @@ public class Navigation {
 
     }
     public static void forward(){
+        MazeGameSettings.MAINTHREADON=false;
+        MazeGameSettings.ENEMYTHREADON=false;
        update(RECENTSCENE);
        RECENTSCENE=null;
 

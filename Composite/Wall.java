@@ -1,4 +1,4 @@
-package Maze.Composite;
+package Composite;
 
 import Maze.Player;
 import javafx.scene.paint.Color;

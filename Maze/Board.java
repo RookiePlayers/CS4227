@@ -1,18 +1,16 @@
 package Maze;
 
-import Maze.Composite.BombedWall;
-import Maze.Composite.NormalWall;
-import Maze.Composite.Wall;
+import Composite.BombedWall;
+import Composite.NormalWall;
+import Composite.Wall;
 import Maze.ButtonFactory.Door;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 import javafx.scene.canvas.*;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Stack;
-import java.util.UUID;
+
+import java.util.*;
 
 public class Board extends StackPane implements Runnable
 {
@@ -29,11 +27,43 @@ public class Board extends StackPane implements Runnable
     protected ArrayList<PlayerBoard> playerBoard=new ArrayList<>();
     protected ArrayList<Player> players=new ArrayList<>();
     private ArrayList<Color> doorColors=new ArrayList<>();
+    private MazePreference mazePreference=new MazePreference();
 
-    public Board(double height,double width,int sizeFactor){
+    public MazePreference getMazePreference() {
+        return mazePreference;
+    }
+
+    public void setMazePreference(MazePreference mazePreference) {
+        this.mazePreference = mazePreference;
+    }
+
+
+    public Board(Board b){
+        this.height=b.height+300;
+        this.width=b.width+300;
+        this.sizeFactor=b.mazePreference.getSizeFactor();
+        this.mazePreference=b.mazePreference;
+        this.canvas=new Canvas(height,height);
+        this.gc=canvas.getGraphicsContext2D();
+        this.cellStack=b.getCellStack();
+        this.columns=b.getColumns();
+        this.rows=b.getRows();
+        current=BoardCells.cells.get(0);
+        getChildren().addAll(canvas);
+        for(int i=0;i<BoardCells.cells.size();i++){
+            draw(i);
+        }
+        for(int i=0;i<cellStack.size();i++){
+            drawPath(i);
+        }
+       // fillStack();
+
+    }
+    public Board(double height, double width, MazePreference mazePreference){
         this.height=height;
         this.width=width;
-        this.sizeFactor=sizeFactor;
+        this.sizeFactor=mazePreference.getSizeFactor();
+        this.mazePreference=mazePreference;
         cellStack=new Stack<>();
         virtualStack=new Stack<>();
         virtualStack.addAll(cellStack);
@@ -150,26 +180,77 @@ public class Board extends StackPane implements Runnable
         return randomColor;
 
     }
+public ArrayList<Integer> uniqueRandom(int min, int max, int size,ArrayList<Integer> temp){
+       int num=0;
+    System.out.println(size);
+        if (size<=0)
+            return temp;
+        else {
+            num=(int)(Math.random()*max);
+            if(temp.contains(num))uniqueRandom(min,max,size,temp);
+            else{
+                temp.add(num);
+                size--;
+                uniqueRandom(min,max,size,temp);
+            }
+        }
+        return temp;
 
+}
     public  void setDoors(int numOfDoors,int max){
 
          max=(int)(sizeFactor/10)/2;
         // numOfDoors=(int)(Math.random()*max);
-            while (numOfDoors > 0) {
+        numOfDoors=Math.min(numOfDoors, cellStack.size());//umOfDoors>=cellStack.size()-1&&numOfDoors/2>=cellStack.size()-1? (cellStack.size()-1)/2 :numOfDoors/2; //
+       ArrayList<Integer>allIndexes=uniqueRandom(0,cellStack.size(),numOfDoors,new ArrayList<>());
+        System.out.println(allIndexes);
+       int i=0;
+       while (i<allIndexes.size()-1) {
+            System.out.println(numOfDoors);
+            int entry=allIndexes.get(i++);
+            int exit=allIndexes.get(i++);
+            if(exit==entry){
+                exit=(int)((Math.random()*cellStack.size()-2)+1)+2;
+            }
+            System.out.println("??? "+entry);
+            Cell c=cellStack.get(entry);
+            c.setGc(this.gc);
+            Color color=generateRandomColor();
+            BoardCells.cells.get(entry).changeColor(color);
+            BoardCells.cells.get(entry).setDoor(true,true);
+            if(cellStack.get(entry).id!=cellStack.lastElement().id)
+            BoardCells.cells.set(entry,new Door(c.getI(),c.getJ(),c.getWidth(),c.getHeight(), BoardCells.cells.get(exit),color));
+            numOfDoors--;
+        }
+           /* while (numOfDoors >0) {
                 System.out.println(numOfDoors);
-                int entry=(int)(Math.random()*cellStack.size());
-                int exit=(int)(Math.random()*cellStack.size());
-                if(exit==entry){
-                    exit=exit+(int)((Math.random()*cellStack.size()-2)+1)+2;
+                Stack<Cell>temp=new Stack<>();
+                temp.addAll(cellStack);
+                Collections.shuffle(temp);
+                Cell entry= temp.get(0);
+                Collections.shuffle(temp);
+                Cell exit= temp.get(0);
+                if(exit.id==entry.id){
+                    Collections.shuffle(temp);
+                     exit= temp.get(0);
                 }
-                Cell c=cellStack.get(entry);
+                Cell c=entry;
                 c.setGc(this.gc);
                 Color color=generateRandomColor();
-                BoardCells.cells.get(entry).changeColor(color);
-                BoardCells.cells.get(entry).setDoor(true,true);
-                BoardCells.cells.set(entry,new Door(c.getI(),c.getJ(),c.getWidth(),c.getHeight(), BoardCells.cells.get(exit),color));
+                entry.changeColor(color);
+               entry.setDoor(true,true);
+                BoardCells.cells.indexOf(entry);
+                        int index=-1;
+                for(Cell cl:BoardCells.cells)
+                {
+                    if(cl.id==entry.id){
+                        index++;
+                        break;
+                    }
+                }
+                BoardCells.cells.set(index,new Door(c.getI(),c.getJ(),c.getWidth(),c.getHeight(), exit,color));
                 numOfDoors--;
-            }
+            }*/
 
 
 
@@ -261,7 +342,7 @@ public class Board extends StackPane implements Runnable
                     Wall[] walls=new Wall[]{new NormalWall(),new NormalWall(),new NormalWall(),new NormalWall()};
                     cell.setSpecialWalls(walls);
                 }else
-                cell.setSpecialWalls(attachWalls(.40));
+                cell.setSpecialWalls(attachWalls(mazePreference.getWallDifficulty()/100));
 
                 cell.id=UUID.randomUUID().toString();//ids[i][j];//
                 cell.setColumns(columns);
@@ -322,11 +403,16 @@ public class Board extends StackPane implements Runnable
         }else{
             System.out.println("No More empty cells");
             BoardCells.path.addAll(cellStack);
-            setDoors(2,2);
+            setDoors(mazePreference.getDoorAmnt(),mazePreference.getDoorAmnt());
+
             isGoodMaze();
         }
 
     }
+    public void setTraps(int amt){
+
+    }
+    public void setHPs(int amt){}
     public void drawPath(int i){
         System.out.println(i+") Drawing "+cellStack.size()+" Cells: CellId - "+cellStack.get(i).id);
         cellStack.lastElement().hightlight(gc);
@@ -390,17 +476,21 @@ public class Board extends StackPane implements Runnable
     public void run() {
         int i=0;
         //i<cellStack.size()
+        if(mazePreference.isRMG())
         while(i<cellStack.size()){
 
             try {
                 drawPath(i);
                 i++;
 
-                Thread.sleep(10);
+                Thread.sleep(mazePreference.isRMG()?10:0);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
+        }
+        else  for( i=0;i<cellStack.size();i++){
+            drawPath(i);
         }
     }
 
@@ -414,12 +504,14 @@ public class Board extends StackPane implements Runnable
     public Wall[] attachWalls(double chance){
         Wall walls[]=new Wall[4];
         double rand=Math.random()*(1.0-chance);
-        if(rand<=.25&&rand>=0){
-            //add Bombed wall
-            walls[0]=new BombedWall();
+        if(chance<=0.01){
+            if(rand<=.25&&rand>=0){
+                //add Bombed wall
+                walls[0]=new BombedWall();
 
-        }
-        else   walls[0]=new NormalWall();
+            }
+            else   walls[0]=new NormalWall();
+
 
         double rand1=Math.random()*(1.0-(chance/2));
         if(rand1<=.25&&rand1>=0){
@@ -444,6 +536,13 @@ public class Board extends StackPane implements Runnable
 
         }
         else   walls[3]=new NormalWall();
+    }
+        else{
+            walls[0]=new NormalWall();
+            walls[1]=new NormalWall();
+            walls[2]=new NormalWall();
+            walls[3]=new NormalWall();
+        }
         return walls;
     }
 }

@@ -1,6 +1,6 @@
 package Command.PlayerCommand;
 
-public interface PlayerMovement {
+public interface IPlayerMovement {
 
     public void moveUp();
     public void moveDown();

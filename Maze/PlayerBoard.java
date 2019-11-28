@@ -1,14 +1,13 @@
 package Maze;
 
+import AbstractFactory.TreasureHunt.TreasureHuntMenuBar;
 import Command.PlayerCommand.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class PlayerBoard extends Canvas{
     private Board b;
@@ -16,7 +15,7 @@ public class PlayerBoard extends Canvas{
     //public Player player;
     public ArrayList<Player>players;
     public ArrayList<ControllerCommand>controllerCommands=new ArrayList<>();
-
+    int currentPoints=0;
 
     private GraphicsContext game;
 
@@ -61,7 +60,7 @@ public class PlayerBoard extends Canvas{
     }
     public void setupP1Controls(Player player, KeyEvent e){
 
-            Command commandPlayer=null;
+            ICommand ICommandPlayer =null;
             controllerCommands.get(0).setTarget(player);
 
 
@@ -69,7 +68,7 @@ public class PlayerBoard extends Canvas{
                 case D: {
                     System.out.println("RIGHT");
                    // player.moveRight();
-                    commandPlayer=controllerCommands.get(0).getMovements()[3];
+                    ICommandPlayer =controllerCommands.get(0).getMovements()[3];
 
 
                 }
@@ -77,40 +76,61 @@ public class PlayerBoard extends Canvas{
                 case W: {
                     System.out.println("UP");
                    // player.moveUp();
-                    commandPlayer=controllerCommands.get(0).getMovements()[0];
+                    ICommandPlayer =controllerCommands.get(0).getMovements()[0];
                 }
                 break;
                 case A: {
                     System.out.println("LEFT");
                    // player.moveLeft();
-                    commandPlayer=controllerCommands.get(0).getMovements()[1];
+                    ICommandPlayer =controllerCommands.get(0).getMovements()[1];
                 }
                 break;
                 case S: {
                     System.out.println("DOWN");
                    // player.moveDown();
-                    commandPlayer=controllerCommands.get(0).getMovements()[2];
+                    ICommandPlayer =controllerCommands.get(0).getMovements()[2];
                 }
                 break;
             }
             PlayerTrigger playerTrigger;
-            if(commandPlayer!=null)
+            if(ICommandPlayer !=null)
             {
-                playerTrigger=new PlayerTrigger(commandPlayer);
+                playerTrigger=new PlayerTrigger(ICommandPlayer);
                 playerTrigger.move();
             }
 
             if(player.current==b.getCellStack().lastElement()){
-                b.setGoal(true);
+               if(MazeGameSettings.currentMode==GameModes.TREASUREHUNT)
+               {
+                    currentPoints=Integer.parseInt(TreasureHuntMenuBar.pointsBtn.getText());
+                   if(currentPoints>=MazeGameSettings.preference.getTreasureGoal()){
+                       b.setGoal(true);
+
+                       player.setDone(true);
+                       player.hightlight(game, Color.GOLD);
+                   }
+                   else{
+                            TreasureHuntMenuBar.message.setStyle("-fx-text-fill:white;-fx-font-size:20px");
+                       b.setGoal(false);
+
+                       player.setDone(false);
+
+                   }
+
+               }
+               else{
+                   b.setGoal(true);
+
                 player.setDone(true);
                 player.hightlight(game, Color.GOLD);
                 System.out.println("Finished!!!");
+               }
             }
     }
     public void setupP2Controls(Player player, KeyEvent e){
 
 
-        Command commandPlayer=null;
+        ICommand ICommandPlayer =null;
         controllerCommands.get(1).setTarget(player);
 
 
@@ -118,7 +138,7 @@ public class PlayerBoard extends Canvas{
             case L: {
                 System.out.println("RIGHT");
                 // player.moveRight();
-                commandPlayer=controllerCommands.get(1).getMovements()[3];
+                ICommandPlayer =controllerCommands.get(1).getMovements()[3];
 
 
             }
@@ -126,26 +146,26 @@ public class PlayerBoard extends Canvas{
             case I: {
                 System.out.println("UP");
                 // player.moveUp();
-                commandPlayer=controllerCommands.get(1).getMovements()[0];
-            }
-            break;
-            case K: {
-                System.out.println("LEFT");
-                // player.moveLeft();
-                commandPlayer=controllerCommands.get(1).getMovements()[1];
+                ICommandPlayer =controllerCommands.get(1).getMovements()[0];
             }
             break;
             case J: {
+                System.out.println("LEFT");
+                // player.moveLeft();
+                ICommandPlayer =controllerCommands.get(1).getMovements()[1];
+            }
+            break;
+            case K: {
                 System.out.println("DOWN");
                 // player.moveDown();
-                commandPlayer=controllerCommands.get(1).getMovements()[2];
+                ICommandPlayer =controllerCommands.get(1).getMovements()[2];
             }
             break;
         }
         PlayerTrigger playerTrigger;
-        if(commandPlayer!=null)
+        if(ICommandPlayer !=null)
         {
-            playerTrigger=new PlayerTrigger(commandPlayer);
+            playerTrigger=new PlayerTrigger(ICommandPlayer);
             playerTrigger.move();
         }
 

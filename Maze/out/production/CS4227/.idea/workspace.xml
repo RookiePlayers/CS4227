@@ -2,53 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0491530a-1b1d-4253-b3a7-9b8c7bf03bda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Command/ChangeScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/NavigationControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/NavigationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/NextScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/ControllerCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveDown.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveLeft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveRight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveUP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/MovementType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/PlayerMovement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/PlayerTrigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PlayerCommand/WASDMovement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/PreviousScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Command/SceneNavigation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Facade/PlayerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Actor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/AI/AstarInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AbstractFactory/AI/enemyAI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/GameSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/MazePreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/MazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/MazeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerMazeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/ChangeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/ChangeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/NavigationControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/INavigationControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/NavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/NextScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/NextScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/ControllerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/ControllerCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveDown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveLeft.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveLeft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveRight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveRight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MoveUP.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MoveUP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/MovementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/MovementType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/PlayerMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/IPlayerMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/PlayerTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/PlayerTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PlayerCommand/WASDMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PlayerCommand/WASDMovementI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/PreviousScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/PreviousScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/SceneNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command/SceneINavigation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/BombedWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Composite/BombedWall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/CollisionDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Facade/CollisionDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Composite/BombedWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Composite/BombedWall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Composite/NormalWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Composite/NormalWall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Composite/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Composite/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/EnemyBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/EnemyBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Health.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Health.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/MazeSolver/MazeSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/MazeSolver/MazeSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/NormalWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Composite/NormalWall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/PlayMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/PlayMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/PlayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/PlayerBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Trap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Composite/Wall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Actor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Maze.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Maze.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerMazeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerMazeFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMazeFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Cell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/MazeSolver/MazeSolver$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/MazeSolver/MazeSolver$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/MazeSolver/MazeSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/MazeSolver/MazeSolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayerBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayerBoard$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayerBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayerBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/inventory/controls/Effects.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/inventory/controls/Effects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/controls/Effects.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/controls/Effects.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,8 +68,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -94,13 +99,16 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/AbstractFactory/Survival" />
-      <recent name="$PROJECT_DIR$/AbstractFactory" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Maze" />
       <recent name="AbstractFactory" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/AbstractFactory/Survival" />
+      <recent name="$PROJECT_DIR$/AbstractFactory" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -180,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574525262148</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Completed &#10;&#10;Maze Generation&#10;A*&#10;&#10;Implemented&#10;&#10;Abstract Factory &#10;Facade&#10;Composite&#10;Command">
+      <created>1574584225844</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574584225844</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,12 +220,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Maze/Enemy.java</url>
-          <line>62</line>
+          <line>75</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Maze/GameScene.java</url>
-          <line>47</line>
+          <line>76</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

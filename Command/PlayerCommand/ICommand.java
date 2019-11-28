@@ -1,5 +1,5 @@
 package Command.PlayerCommand;
 
-public interface Command {
+public interface ICommand {
     public void execute();
 }

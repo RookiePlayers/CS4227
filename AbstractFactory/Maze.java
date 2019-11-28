@@ -14,7 +14,8 @@ import Maze.Scenes;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import Maze.MazeParts;
-import Maze.Player;
+import  Maze.MazePreference;
+import Maze.*;
 import javax.swing.border.Border;
 
 public class Maze extends Pane implements  Runnable{
@@ -28,6 +29,7 @@ public class Maze extends Pane implements  Runnable{
     private long timeLength=30000;
     public int controllers=0;
     int deadPlayers=0;
+    MazePreference preference;
 
     protected boolean gameOver=false;
 
@@ -50,15 +52,39 @@ public class Maze extends Pane implements  Runnable{
         setStyle("-fx-background-color:red");
 
     }
+    public Maze(MazeFactory f, Stage parent, int controllers, MazePreference preference){
+        this.controllers=controllers;
+        this.factory=f;
+        this.preference=preference;
+        this.parent=parent;
+        timeLength=preference.getLength();
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        setWidth(bounds.getWidth());
+        setHeight(bounds.getHeight());
+        setStyle("-fx-background-color:red");
+
+    }
     public void createMaze(){
 
-        this.gameBoard=factory.createBoard(800,800,controllers);
+
+
+        this.gameBoard=factory.createBoard(800,800,controllers,preference);
+       // this.gameBoard.setTraps(preference.getTrapAmnt());
+      //  System.out.println(preference.getTrapAmnt());
+       // this.gameBoard.setHPs(2);
         this.topMenu= factory.createMenuBar(gameBoard.getPlayers());
         this.winScene=factory.createWinScene(parent,new BorderPane(),timeLength,gameBoard.getPlayers());
         this.loseScene=factory.createLoseScene(parent,new BorderPane(),timeLength);
         this.mainScene=factory.createMazeScene(parent,new BorderPane());
 
         MazeParts.currentMenubar=topMenu;
+
+        this.topMenu.getSolutionBtn().setOnAction(e->{
+            Board board=new Board(this.gameBoard);
+            new TestMaze(board);
+
+        });
 
 
 
@@ -139,7 +165,7 @@ public class Maze extends Pane implements  Runnable{
     }
     @Override
     public void run() {
-        while (!gameOver){
+        while (!gameOver&& MazeGameSettings.MAINTHREADON){
             try {
                 //if Time is Up
                 System.out.println(this.gameBoard.isGoal());

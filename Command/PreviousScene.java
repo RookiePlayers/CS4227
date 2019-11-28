@@ -2,11 +2,11 @@ package Command;
 
 import javafx.scene.control.Button;
 
-public class PreviousScene extends Button implements Command {
+public class PreviousScene extends Button implements ICommand {
 
-    NavigationControl scene;
+    INavigationControl scene;
 
-    public PreviousScene(NavigationControl scene) {
+    public PreviousScene(INavigationControl scene) {
         this.scene = scene;
     }
 

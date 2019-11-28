@@ -18,6 +18,7 @@ public class Player extends Cell implements Actor{
     public GraphicsContext gc;
     public  Cell current;
     private boolean done=false;
+    private boolean shielded=false;
 
 
     private Inventory inventory;
@@ -34,6 +35,14 @@ public class Player extends Cell implements Actor{
        // setHeight(h/2);
        // setWidth(w/2);
 
+    }
+
+    public boolean isShielded() {
+        return shielded;
+    }
+
+    public void setShielded(boolean shielded) {
+        this.shielded = shielded;
     }
 
     public boolean isDone() {
@@ -84,6 +93,7 @@ public class Player extends Cell implements Actor{
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
+    @Override
     public void drawPlayer(){
 
         System.out.println("Current-> "+current);
@@ -163,23 +173,43 @@ public class Player extends Cell implements Actor{
             }
             if (move) {
                 gc.clearRect(getX(), getY(), getWidth(), getHeight());
+
                 setI(next.getI());
                 setJ(next.getJ());
                 current = next;
-                drawPlayer();
+                if(!shielded)drawPlayer();
+                else drawShielded();
 
             }
             if (next.isDoor()) {
                 current = this;
+
                 next.exitDoor(this);
 
             }
             if (next.isTrap()) {
 
                 current = this;
+
                 CollisionDetector collision = new CollisionDetector(this);
-                collision.detectTrapCollision((Trap)next);
-                this.health = collision.player.health;
+                if(next instanceof  Trap)
+                System.out.println(next+" instance of trap" );
+                else
+                    System.out.println("Instance of Cell");
+                if(!shielded)
+                {collision.detectTrapCollision((Trap)next);this.health = collision.player.health;}
+                else {
+                    shielded=false;
+                    collision.detectTrapCollision((Trap)next);
+                    drawPlayer();
+                }
+
+
+            }
+            if (next.isItem()){
+                current = this;
+                CollisionDetector collision = new CollisionDetector(this);
+                collision.detectItemCollision((Item)next);
 
             }
             if (next.isLife()) {
@@ -188,6 +218,14 @@ public class Player extends Cell implements Actor{
                 CollisionDetector collision = new CollisionDetector(this);
                 collision.detectHPCollision((Health)next);
                 this.health = collision.player.health;
+
+            }
+            if(next.isShield()){
+                current = this;
+                //gc.clearRect(getX(), getY(), getWidth(), getHeight());
+                CollisionDetector collision = new CollisionDetector(this);
+                collision.detectShieldCollision((Shield)next);
+              //  drawShielded();
 
             }
         }
@@ -330,11 +368,34 @@ public class Player extends Cell implements Actor{
 
     @Override
     public String toString() {
-        return "Player{" +
+        return "Player{Shielded? "+shielded +
                 "health=" + health +
 
                 ", name='" + name + '\'' +
 
                 '}';
+    }
+
+    public void drawShielded() {
+        System.out.println("Current-> "+current);
+        double x=super.getI()*super.w;
+        double y=super.getJ()*super.w;
+        //x=40.0;
+        setX(x);
+        setY(y);
+        gc.setEffect(Effects.GLOW(20.0));
+        gc.setFill(Color.LIGHTBLUE);
+        gc.setStroke(Color.LIGHTBLUE);
+
+        gc.setFill(this.color);
+        gc.strokeOval(getX(),
+                getY(),
+                getWidth(),
+                getHeight());
+        gc.fillOval(getX(),
+                getY(),
+                getWidth(),
+                getHeight());
+        gc.setEffect(null);
     }
 }

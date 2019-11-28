@@ -1,7 +1,12 @@
 package AbstractFactory.Multiplayer;
 
 import AbstractFactory.MazeMenuBar;
+import Command.ChangeScene;
+import Command.INavigationControl;
+import Command.NavigationController;
+import Command.PreviousScene;
 import Maze.Heartbox;
+import Maze.Navigation;
 import Maze.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -20,6 +25,7 @@ import java.util.ArrayList;
 
 public class MultiplayerMenuBar extends MazeMenuBar {
     Button time;
+    //Button solutionBtn;
     private ArrayList<Heartbox> heartBox = new ArrayList<>();
 
 
@@ -40,14 +46,18 @@ public class MultiplayerMenuBar extends MazeMenuBar {
         bar.setAlignment(Pos.CENTER);
 
         bar.setSpacing(20);
-        Button inventoryBtn=new Button("Inventory");
-        inventoryBtn.setAlignment(Pos.CENTER_LEFT);
+        INavigationControl nControl= NavigationController.getNavigation();
+        PreviousScene previousScene=new PreviousScene(nControl);
+        previousScene.setText("Exit");
+        ChangeScene changeScene=new ChangeScene(previousScene);
+        previousScene.setOnAction(e->{changeScene.press();});
 
         this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
         time.setAlignment(Pos.CENTER);
-        Button equipBtn=new Button("Equip");
-        equipBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(time);
+         solutionBtn=new Button("Solution");
+        solutionBtn.setAlignment(Pos.CENTER_RIGHT);
+        bar.getChildren().addAll(previousScene,time,solutionBtn);
+
 
 
         return bar;

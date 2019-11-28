@@ -1,11 +1,11 @@
 package Command;
 
 public class ChangeScene {
-    Command command;
-    public  ChangeScene(Command newCommand){
-        command=newCommand;
+    ICommand ICommand;
+    public  ChangeScene(ICommand newICommand){
+        ICommand = newICommand;
     }
     public void press(){
-        command.execute();
+        ICommand.execute();
     }
 }

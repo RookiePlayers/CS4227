@@ -2,7 +2,7 @@ package AbstractFactory.Survival;
 
 import AbstractFactory.*;
 import Maze.Board;
-import Maze.Player;
+import Maze.*;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
@@ -15,8 +15,8 @@ public class SurvivalMazeFactory implements MazeFactory {
     }
 
     @Override
-    public Board createBoard(double height, double width,int controllers) {
-        return new SurvivalBoard(height,width,controllers) ;
+    public Board createBoard(double height, double width, int controllers, MazePreference preference) {
+        return new SurvivalBoard(height,width,controllers,preference) ;
     }
 
     @Override

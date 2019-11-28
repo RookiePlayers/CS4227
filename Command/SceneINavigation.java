@@ -3,9 +3,7 @@ package Command;
 import Maze.Navigation;
 import javafx.scene.Scene;
 
-import java.util.Stack;
-
-public class SceneNavigation implements  NavigationControl {
+public class SceneINavigation implements INavigationControl {
 
     Scene newScene,initScene;
 

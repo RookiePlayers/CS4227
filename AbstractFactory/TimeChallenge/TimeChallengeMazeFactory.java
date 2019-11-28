@@ -3,6 +3,7 @@ package AbstractFactory.TimeChallenge;
 import AbstractFactory.*;
 import Maze.Board;
 import Maze.Player;
+import Maze.MazePreference;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -17,8 +18,8 @@ public class TimeChallengeMazeFactory implements MazeFactory {
     }
 
     @Override
-    public Board createBoard(double height, double width,int controllers) {
-        return new TimeChallengeBoard(height,width,controllers) ;
+    public Board createBoard(double height, double width, int controllers,MazePreference preference) {
+        return new TimeChallengeBoard(height,width,controllers,preference) ;
     }
 
     @Override

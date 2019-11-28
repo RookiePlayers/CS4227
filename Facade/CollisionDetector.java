@@ -28,6 +28,22 @@ public class CollisionDetector {
         }
 
     }
+    public void detectShieldCollision(Shield s) {
+        if(s.isShield()){
+            s.triggerShield(player);
+           // MazeParts.currentMenubar.updateHealth(player);
+
+        }
+
+    }
+    public void detectItemCollision(Item item) {
+        if(item.isItem()){
+            item.triggerItem(player);
+            // MazeParts.currentMenubar.updateHealth(player);
+
+        }
+
+    }
     public void detectWallHit(){
         System.out.println(player);
         MazeParts.currentMenubar.updateHealth(player);

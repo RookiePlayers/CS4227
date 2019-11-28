@@ -13,8 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import javax.swing.border.Border;
-
 public class PlayMenu {
     private Scene scene;
     private Stage parent;
@@ -25,7 +23,7 @@ public class PlayMenu {
     }
 
     public HBox navigation(){
-        NavigationControl nControl= NavigationController.getNavigation();
+        INavigationControl nControl= NavigationController.getNavigation();
         PreviousScene previousScene=new PreviousScene(nControl);
         previousScene.setText("◀");
         NextScene nextScene=new NextScene(nControl);
@@ -58,34 +56,19 @@ public class PlayMenu {
         VBox vbox =new VBox();
         Button timeChallenge=new Button("Time Challenge");
         timeChallenge.setOnAction(e->{
-            Screen screen = Screen.getPrimary();
-            Rectangle2D bounds = screen.getVisualBounds();
-
-            GameScene game=new GameScene(parent,GameModes.TIMECHALLENGE);
-            Scene gameScene=game.getScene(bounds.getHeight(),bounds.getWidth());
-            Navigation.update(gameScene);
-            parent.setScene(gameScene);
+            playGame(GameModes.TIMECHALLENGE);
         });
         Button treasureHunt=new Button("Treasure Hunt");
+        treasureHunt.setOnAction(e->{
+            playGame(GameModes.TREASUREHUNT);
+        });
         Button multiplayer=new Button("Multiplayer");
         multiplayer.setOnAction(e->{
-            Screen screen = Screen.getPrimary();
-            Rectangle2D bounds = screen.getVisualBounds();
-
-            GameScene game=new GameScene(parent,GameModes.MULTIPLAYER);
-            Scene gameScene=game.getScene(bounds.getHeight(),bounds.getWidth());
-            Navigation.update(gameScene);
-            parent.setScene(gameScene);
+            playGame(GameModes.MULTIPLAYER);
         });
         Button survival=new Button("Survival");
         survival.setOnAction(e->{
-            Screen screen = Screen.getPrimary();
-            Rectangle2D bounds = screen.getVisualBounds();
-
-            GameScene game=new GameScene(parent,GameModes.SURVIVAL);
-            Scene gameScene=game.getScene(bounds.getHeight(),bounds.getWidth());
-            Navigation.update(gameScene);
-            parent.setScene(gameScene);
+            playGame(GameModes.SURVIVAL);
         });
         vbox.setSpacing(10.0);
         vbox.setAlignment(Pos.CENTER);
@@ -105,5 +88,15 @@ public class PlayMenu {
         scene=new Scene(borderPane,h,w, Color.WHITE); borderPane.prefHeightProperty().bind(scene.heightProperty());
         borderPane.prefWidthProperty().bind(scene.widthProperty());
         return scene;
+    }
+
+    public void playGame(GameModes mode) {
+        MazeGameSettings.currentMode=mode;
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+
+        GameSetting game = new GameSetting(parent, mode);
+        Navigation.update(game.getScene(bounds.getHeight(), bounds.getWidth()));
+        parent.setScene(game.getScene(bounds.getHeight(), bounds.getWidth()));
     }
 }

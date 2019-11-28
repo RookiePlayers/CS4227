@@ -1,6 +1,10 @@
 package AbstractFactory.Survival;
 
 import AbstractFactory.MazeMenuBar;
+import Command.ChangeScene;
+import Command.INavigationControl;
+import Command.NavigationController;
+import Command.PreviousScene;
 import Maze.Heartbox;
 import Maze.Player;
 import javafx.application.Platform;
@@ -17,6 +21,7 @@ import java.util.ArrayList;
 
 public class SurvivalMenuBar extends MazeMenuBar {
     Button time;
+    //Button solutionBtn;
     private ArrayList<Heartbox> heartBox = new ArrayList<>();
     public SurvivalMenuBar(ArrayList<Player>players){
         super(players);
@@ -35,14 +40,19 @@ public class SurvivalMenuBar extends MazeMenuBar {
         bar.setAlignment(Pos.CENTER);
 
         bar.setSpacing(20);
-        Button inventoryBtn=new Button("Inventory");
-        inventoryBtn.setAlignment(Pos.CENTER_LEFT);
+        INavigationControl nControl= NavigationController.getNavigation();
+        PreviousScene previousScene=new PreviousScene(nControl);
+        previousScene.setText("Exit");
+        ChangeScene changeScene=new ChangeScene(previousScene);
+        previousScene.setOnAction(e->{changeScene.press();});
 
-          this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
-         time.setAlignment(Pos.CENTER);
-        Button equipBtn=new Button("Equip");
-        equipBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(inventoryBtn,time,equipBtn);
+        this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
+        time.setAlignment(Pos.CENTER);
+         solutionBtn=new Button("Solution");
+        solutionBtn.setAlignment(Pos.CENTER_RIGHT);
+        bar.getChildren().addAll(previousScene,time,solutionBtn);
+
+
 
 
         return bar;

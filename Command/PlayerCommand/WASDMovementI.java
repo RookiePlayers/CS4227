@@ -3,10 +3,10 @@ package Command.PlayerCommand;
 import Maze.Actor;
 
 
-public class WASDMovement implements  PlayerMovement {
+public class WASDMovementI implements IPlayerMovement {
     Actor actor;
 
-    public WASDMovement(Actor actor) {
+    public WASDMovementI(Actor actor) {
         this.actor = actor;
     }
 

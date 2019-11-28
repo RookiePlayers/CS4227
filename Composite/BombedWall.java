@@ -1,4 +1,4 @@
-package Maze.Composite;
+package Composite;
 
 import Facade.CollisionDetector;
 import Maze.Player;
@@ -25,7 +25,10 @@ public class BombedWall implements Wall {
 
     @Override
     public void hitWall(Player player) {
-        player.takeDamage(1);
+        if(!player.isShielded())player.takeDamage(1);
+        else player.drawPlayer();
+        player.setShielded(false);
+
         CollisionDetector collision = new CollisionDetector(player);
         collision.detectWallHit();
     }

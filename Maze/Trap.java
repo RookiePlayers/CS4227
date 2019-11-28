@@ -18,9 +18,12 @@ public class Trap extends Cell {
     public void destroyTrap(GraphicsContext gc){
         clear();
         Cell c=new Cell(this.getI(),this.getJ(),this.getWidth(),this.getHeight());
-        c.setWalls(this.getWalls());
+        c.setSpecialWalls(this.getSpecialWalls());
         c.visited=true;
         c.drawRectangle(super.gc);
+        int index=BoardCells.cells.indexOf(this);
+        if(index>-1)BoardCells.cells.set(index,c);
+
 
 
     }

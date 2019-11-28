@@ -1,14 +1,14 @@
 package Command.PlayerCommand;
 
-public class MoveLeft implements Command {
-    PlayerMovement playerMovement;
+public class MoveLeft implements ICommand {
+    IPlayerMovement IPlayerMovement;
 
-    public MoveLeft(PlayerMovement playerMovement) {
-        this.playerMovement = playerMovement;
+    public MoveLeft(IPlayerMovement IPlayerMovement) {
+        this.IPlayerMovement = IPlayerMovement;
     }
 
     @Override
     public void execute() {
-        playerMovement.moveLeft();
+        IPlayerMovement.moveLeft();
     }
 }

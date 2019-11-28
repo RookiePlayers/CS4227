@@ -1,12 +1,12 @@
 package Command.PlayerCommand;
 
 public class PlayerTrigger {
-    Command command;
+    ICommand ICommand;
 
-    public PlayerTrigger(Command command) {
-        this.command = command;
+    public PlayerTrigger(ICommand ICommand) {
+        this.ICommand = ICommand;
     }
     public void move(){
-        this.command.execute();
+        this.ICommand.execute();
     }
 }
