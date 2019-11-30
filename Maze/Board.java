@@ -26,7 +26,7 @@ public class Board extends StackPane implements Runnable
     protected GraphicsContext gc;
     protected ArrayList<PlayerBoard> playerBoard=new ArrayList<>();
     protected ArrayList<Player> players=new ArrayList<>();
-    private ArrayList<Color> doorColors=new ArrayList<>();
+    public ArrayList<Color> doorColors=new ArrayList<>();
     private MazePreference mazePreference=new MazePreference();
 
     public MazePreference getMazePreference() {
@@ -81,7 +81,7 @@ public class Board extends StackPane implements Runnable
         BoardCells.cols=this.columns;
         BoardCells.rows=this.rows;
         System.out.println(getHeight()+"--"+getWidth());
-        setStyle("-fx-background-color:#111;-fx-margin:20px");
+        setStyle("-fx-background-color:#051806;-fx-margin:20px");
         initiate();
         current=BoardCells.cells.get(0);
 
@@ -153,6 +153,7 @@ public class Board extends StackPane implements Runnable
 
     }
 
+
     public int getColumns() {
         return columns;
     }
@@ -181,6 +182,7 @@ public class Board extends StackPane implements Runnable
 
     }
 public ArrayList<Integer> uniqueRandom(int min, int max, int size,ArrayList<Integer> temp){
+        if(max<size)max=size;
        int num=0;
     System.out.println(size);
         if (size<=0)
@@ -222,35 +224,7 @@ public ArrayList<Integer> uniqueRandom(int min, int max, int size,ArrayList<Inte
             BoardCells.cells.set(entry,new Door(c.getI(),c.getJ(),c.getWidth(),c.getHeight(), BoardCells.cells.get(exit),color));
             numOfDoors--;
         }
-           /* while (numOfDoors >0) {
-                System.out.println(numOfDoors);
-                Stack<Cell>temp=new Stack<>();
-                temp.addAll(cellStack);
-                Collections.shuffle(temp);
-                Cell entry= temp.get(0);
-                Collections.shuffle(temp);
-                Cell exit= temp.get(0);
-                if(exit.id==entry.id){
-                    Collections.shuffle(temp);
-                     exit= temp.get(0);
-                }
-                Cell c=entry;
-                c.setGc(this.gc);
-                Color color=generateRandomColor();
-                entry.changeColor(color);
-               entry.setDoor(true,true);
-                BoardCells.cells.indexOf(entry);
-                        int index=-1;
-                for(Cell cl:BoardCells.cells)
-                {
-                    if(cl.id==entry.id){
-                        index++;
-                        break;
-                    }
-                }
-                BoardCells.cells.set(index,new Door(c.getI(),c.getJ(),c.getWidth(),c.getHeight(), exit,color));
-                numOfDoors--;
-            }*/
+
 
 
 
@@ -287,6 +261,14 @@ public ArrayList<Integer> uniqueRandom(int min, int max, int size,ArrayList<Inte
         playerBoard.add(pb);
         getChildren().add(pb);
 
+    }
+    public void addPlayer(Player p){
+        this.players.add(p);
+        p.setColumns(columns);
+        p.setRows(rows);
+        PlayerBoard pb=new PlayerBoard(players,this);
+        playerBoard.add(pb);
+        getChildren().add(pb);
     }
 
 
@@ -434,7 +416,7 @@ public ArrayList<Integer> uniqueRandom(int min, int max, int size,ArrayList<Inte
     public boolean cellExists(Stack<Cell> list,Cell cell ){
         boolean oldCell=false;
         for (Cell c:list) {
-            if(c.id==cell.id)
+            if(c.id.equals(cell.id))
                 oldCell=true;
 
         }
@@ -503,7 +485,7 @@ public ArrayList<Integer> uniqueRandom(int min, int max, int size,ArrayList<Inte
     }
     public Wall[] attachWalls(double chance){
         Wall walls[]=new Wall[4];
-        double rand=Math.random()*(1.0-chance);
+        double rand=Math.random()*(Math.abs(1.0-chance));
         if(chance<=0.01){
             if(rand<=.25&&rand>=0){
                 //add Bombed wall

@@ -116,6 +116,7 @@ public class GameScene  {
 
 
         Scenes.GAMESCENE=new Scene(maze,h,w);
+        Scenes.GAMESCENE.getStylesheets().add(getClass().getResource("/css/Trapped.css").toExternalForm());
 
 
     maze.setPlayerControls();

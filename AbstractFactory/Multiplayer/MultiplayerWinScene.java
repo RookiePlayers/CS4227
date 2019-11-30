@@ -52,7 +52,7 @@ public class MultiplayerWinScene extends MazeWinScene {
         gameover.setStyle("-fx-font-size:38px;-fx-text-fill:green;");
        winnerLbl=new Label("");
         winnerLbl.setAlignment(Pos.CENTER);
-        winnerLbl.setStyle("-fx-font-size:74px");
+        winnerLbl.setStyle("-fx-font-size:74px;-fx-text-fill:white");
 
         time=new Label();
         time.setStyle("-fx-font-size:72px;-fx-text-fill:white;");
@@ -65,7 +65,7 @@ public class MultiplayerWinScene extends MazeWinScene {
         Button leaderboard=new Button("Leaderboard");
         actions.getChildren().addAll(saveScore);
         vbox.setSpacing(20);
-        vbox.getChildren().addAll(title,gameover,winnerLbl,time,actions);
+        vbox.getChildren().addAll(title,gameover,winnerLbl);
         return vbox;
     }
     public Pane bottom(){
@@ -74,6 +74,8 @@ public class MultiplayerWinScene extends MazeWinScene {
         Button homeButton=new Button("\u2302");
         Button nextButton=new Button("▶");
         options.setSpacing(10);
+        homeButton.getStyleClass().add("nav-btn");
+        backBtbn.getStyleClass().add("nav-btn");
 
         backBtbn.setOnAction(e-> {
             Navigation.previous();
@@ -88,7 +90,7 @@ public class MultiplayerWinScene extends MazeWinScene {
             stageParent.setScene( Navigation.HOME);
 
         });
-        options.getChildren().addAll(backBtbn,homeButton,nextButton);
+        options.getChildren().addAll(backBtbn,homeButton);
         return options;
     }
     @Override

@@ -25,7 +25,7 @@ public class Leaderboard implements LeaderboardInterface {
         try {
 
 
-            FileWriter writer = new FileWriter(new File(getClass().getClassLoader().getResource("/text/" + file).getFile()), true);
+            FileWriter writer = new FileWriter(new File((getClass().getResource("/text/" + file)).getFile()), true);
 
             writer.write(name + "," + value + "," + LocalDateTime.now() + "," + lvl + "\n");
             writer.close();
@@ -50,6 +50,7 @@ public class Leaderboard implements LeaderboardInterface {
             e.printStackTrace();
         }
     }
+    public  Leaderboard(){}
 
     public Leaderboard(String url) {
 

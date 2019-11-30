@@ -38,6 +38,21 @@ public  class Cell extends Rectangle implements  Comparable{
     protected GraphicsContext gc;
     private boolean shield=false;
     private boolean item=false;
+    private final String grassImg="/Images/grass.jpg";
+    private final String exitImg="/Images/exit.png";
+    private final String finishImg="/Images/finish.png";
+    private final String gate01Img="/Images/gate01.png";
+    private final String heartImg="/Images/heart.png";
+    private final String item1="/Images/iphone.png";
+    private final String item2="/Images/pile.png";
+    private final String item3="/Images/coin.png";
+    private final String item4="/Images/crown.png";
+    private final String item5="/Images/diamond.png";
+    private final String trapImg="/Images/trap.png";
+
+
+
+
 
     public boolean isLife() {
         return life;
@@ -85,6 +100,14 @@ public  class Cell extends Rectangle implements  Comparable{
         isDoor = door;
         this.entry=entry;
 
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public int getRows() {
+        return rows;
     }
 
     public void setColumns(int columns){
@@ -173,7 +196,7 @@ public  class Cell extends Rectangle implements  Comparable{
         setY(y);
         drawWalls(gc,x,y);
 
-        Image img=new Image(getClass().getResourceAsStream("/Images/trap.png"));
+        Image img=new Image(getClass().getResourceAsStream(trapImg));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
     }
@@ -185,7 +208,7 @@ public  class Cell extends Rectangle implements  Comparable{
         setY(y);
         drawWalls(gc,x,y);
 
-        Image img=new Image(getClass().getResourceAsStream("/Images/heart.png"));
+        Image img=new Image(getClass().getResourceAsStream(heartImg));
 
 
         gc.drawImage(img,getX(),getY(),getWidth()*.7,getHeight()*.7);
@@ -201,7 +224,7 @@ public  class Cell extends Rectangle implements  Comparable{
                 getY(),
                 getWidth(),
                 getHeight());
-        Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
+        Image img=new Image(getClass().getResourceAsStream(grassImg));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
         drawWalls(gc,x,y);
@@ -229,7 +252,7 @@ public  class Cell extends Rectangle implements  Comparable{
                 getWidth(),
                 getHeight());
 
-        Image img=new Image(getClass().getResourceAsStream(this.entry?"/Images/gate01.png":"/Images/exit.png"));
+        Image img=new Image(getClass().getResourceAsStream(this.entry?gate01Img:exitImg));
 
         gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
         gc.setEffect(null);
@@ -275,7 +298,7 @@ public  class Cell extends Rectangle implements  Comparable{
                     getY(),
                     getWidth(),
                     getHeight());
-            Image img=new Image(getClass().getResourceAsStream("/Images/grass.jpg"));
+            Image img=new Image(getClass().getResourceAsStream(grassImg));
 
             gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
 
@@ -300,7 +323,7 @@ public  class Cell extends Rectangle implements  Comparable{
 
         }
          if(isEnd){
-             Image img=new Image(getClass().getResourceAsStream("/Images/finish.png"));
+             Image img=new Image(getClass().getResourceAsStream(finishImg));
 
              gc.drawImage(img,getX(),getY(),getWidth(),getHeight());
          }
@@ -488,9 +511,7 @@ public  class Cell extends Rectangle implements  Comparable{
                 getY(),
                 getWidth(),
                 getHeight());gc.setEffect(null);
-       /* Image img=new Image(getClass().getResourceAsStream("/Images/finish.jpg"));
 
-        gc.drawImage(img,getX(),getY(),getWidth(),getHeight());*/
     }
     public void hightlight(GraphicsContext gc,Color color) {
         double x=this.i*w;
@@ -590,5 +611,47 @@ public  class Cell extends Rectangle implements  Comparable{
         this.item=b;
     }
 
+    public String getGrassImg() {
+        return grassImg;
+    }
 
+    public String getExitImg() {
+        return exitImg;
+    }
+
+    public String getFinishImg() {
+        return finishImg;
+    }
+
+    public String getGate01Img() {
+        return gate01Img;
+    }
+
+    public String getHeartImg() {
+        return heartImg;
+    }
+
+    public String getItem1() {
+        return item1;
+    }
+
+    public String getItem2() {
+        return item2;
+    }
+
+    public String getItem3() {
+        return item3;
+    }
+
+    public String getItem4() {
+        return item4;
+    }
+
+    public String getItem5() {
+        return item5;
+    }
+
+    public String getTrapImg() {
+        return trapImg;
+    }
 }

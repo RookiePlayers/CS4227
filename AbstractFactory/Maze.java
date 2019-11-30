@@ -1,10 +1,13 @@
 package AbstractFactory;
 
+import AbstractFactory.Survival.SurvivalMenuBar;
+import AbstractFactory.TimeChallenge.TimeChallengeMenuBar;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -19,7 +22,7 @@ import  Maze.MazePreference;
 import Maze.*;
 import javax.swing.border.Border;
 
-public class Maze extends Pane implements  Runnable{
+public class Maze extends ScrollPane implements  Runnable{
     private MazeFactory factory;
     private MazeMenuBar topMenu;
     private Board gameBoard;
@@ -79,7 +82,17 @@ public class Maze extends Pane implements  Runnable{
         this.loseScene=factory.createLoseScene(parent,new BorderPane(),timeLength);
         this.mainScene=factory.createMazeScene(parent,new BorderPane());
 
+        if(this.topMenu instanceof TimeChallengeMenuBar){
+            timeLength=preference.getLength();
+        }
+        else timeLength=0;
+
+
         MazeParts.currentMenubar=topMenu;
+
+        this.mainScene.getStylesheets().add(getClass().getResource("/css/Trapped.css").toExternalForm());
+        this.winScene.getStylesheets().add(getClass().getResource("/css/Trapped.css").toExternalForm());
+        this.loseScene.getStylesheets().add(getClass().getResource("/css/Trapped.css").toExternalForm());
 
         this.topMenu.getSolutionBtn().setOnAction(e->{
             Board board=new Board(this.gameBoard);
@@ -89,7 +102,12 @@ public class Maze extends Pane implements  Runnable{
 
 
 
-        getChildren().addAll(setupGUI());
+        setContent(setupGUI());
+        pannableProperty().set(true);
+        fitToWidthProperty().set(true);
+        fitToHeightProperty().set(true);
+        hbarPolicyProperty().setValue(ScrollBarPolicy.AS_NEEDED);
+        vbarPolicyProperty().setValue(ScrollBarPolicy.AS_NEEDED);
         System.out.println("MAZE CREATED..");
 
     }
@@ -164,7 +182,11 @@ public class Maze extends Pane implements  Runnable{
             parent.setScene( Navigation.HOME);
 
         });
-        options.getChildren().addAll(backBtbn,homeButton,nextButton);
+        homeButton.getStyleClass().add("nav-btn");
+        backBtbn.getStyleClass().add("nav-btn");
+        nextButton.getStyleClass().add("nav-btn");
+
+        options.getChildren().addAll(backBtbn,homeButton);
         return options;
     }
     @Override
@@ -174,7 +196,7 @@ public class Maze extends Pane implements  Runnable{
                 //if Time is Up
                 System.out.println(this.gameBoard.isGoal());
 
-                   if(this.mainScene.isTimed())
+                   if(this.mainScene.isTimed()&&!this.mainScene.isFoward())
                    {
                        if(timeLength>0){
                            timeLength=timeLength-1000;
@@ -185,6 +207,7 @@ public class Maze extends Pane implements  Runnable{
                        }else{
                            gameOver=true;
                            if(this.gameBoard.isGoal()){
+                               this.winScene.setWinner(gameBoard.getPlayers().get(0));
                                this.winScene.setTimer(timeLength);
                                this.winScene.updateUI();
                                Platform.runLater(()->parent.setScene(this.winScene));
@@ -195,6 +218,14 @@ public class Maze extends Pane implements  Runnable{
                                Platform.runLater(()->parent.setScene(this.loseScene));
                            }
                        }
+                   }
+                   else if(this.mainScene.isTimed()&&this.mainScene.isFoward())
+                   {
+
+                        timeLength=(timeLength+1000);
+                           topMenu.setTimer(timeLength);
+                           topMenu.updateUI();
+
                    }
 
                    for(Player p:gameBoard.getPlayers())
@@ -212,7 +243,7 @@ public class Maze extends Pane implements  Runnable{
                 if(this.gameBoard.isGoal()){
                     gameOver=true;
                     this.winScene.setTimer(timeLength);
-                    this.winScene.getWinner();
+                    this.winScene.setWinner(this.winScene.getWinner());
                     this.winScene.updateUI();
                     Platform.runLater(()->parent.setScene(this.winScene));
                 }

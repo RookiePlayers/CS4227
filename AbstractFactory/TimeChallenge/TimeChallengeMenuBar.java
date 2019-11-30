@@ -12,7 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
+import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -40,10 +42,14 @@ public class TimeChallengeMenuBar extends MazeMenuBar {
         previousScene.setText("Exit");
         ChangeScene changeScene=new ChangeScene(previousScene);
         previousScene.setOnAction(e->{changeScene.press();});
+        previousScene.getStyleClass().add("nav-btn");
 
           this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
          time.setAlignment(Pos.CENTER);
+         time.getStyleClass().add("timerButton");
          solutionBtn=new Button("Solution");
+         solutionBtn.getStyleClass().add("trappedButtons");
+
         solutionBtn.setAlignment(Pos.CENTER_RIGHT);
         bar.getChildren().addAll(time,solutionBtn);
 
@@ -60,6 +66,9 @@ public class TimeChallengeMenuBar extends MazeMenuBar {
     public void updateUI() {
         Platform.runLater(()->{
             time.setText(new SimpleDateFormat("mm:ss").format(timer));
+            if(timer<10000){
+                time.setTextFill(Color.RED);
+            }
         });
 
         super.updateUI();

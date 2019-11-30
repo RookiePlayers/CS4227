@@ -2,11 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0491530a-1b1d-4253-b3a7-9b8c7bf03bda" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Maze/tests/Maze/BoardTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maze/tests/Maze/CellTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Images/clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Images/danger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Images/multiplayer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Images/treasure.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/css/Trapped.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/text/survival.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/text/timeChallenge.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/text/treasureHunt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CS4227.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS4227.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AbstractFactory/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/MazeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/MazeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/MazeWinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/MazeWinScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerWinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Multiplayer/MultiplayerWinScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalLoseScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalLoseScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMazeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalWinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/Survival/SurvivalWinScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeLoseScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeLoseScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMazeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMazeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeWinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TimeChallenge/TimeChallengeWinScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntLoseScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntLoseScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntMazeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntMazeScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntWinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntWinScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leaderboard/Models/Leaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Leaderboard/Models/Leaderboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leaderboard/UI/LeaderBoardOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Leaderboard/UI/LeaderBoardOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leaderboard/UI/LeaderboardGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Leaderboard/UI/LeaderboardGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/GameSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/GameSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Heartbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Heartbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/PlayMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/PlayMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/TrappedPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/TrappedPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/CS4227.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/CS4227.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Maze.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Maze.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Navigation.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Navigation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TestMaze.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TestMaze.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeWinScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/MazeWinScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerMenuBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerWinScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/Multiplayer/MultiplayerWinScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeLoseScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeLoseScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMazeScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMazeScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeMenuBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeWinScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/AbstractFactory/TimeChallenge/TimeChallengeWinScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/GameScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Heartbox.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Heartbox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/PlayMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TrappedPlus.class" beforeDir="false" afterPath="$PROJECT_DIR$/Maze/out/production/CS4227/Maze/TrappedPlus.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +78,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -47,7 +103,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/AbstractFactory/TreasureHunt" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -56,18 +119,25 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
+    <key name="CreateTestDialog.RecentsKey">
       <recent name="Maze" />
-      <recent name="AbstractFactory.TreasureHunt" />
-      <recent name="AbstractFactory" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Maze" />
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/AbstractFactory/TreasureHunt" />
       <recent name="$PROJECT_DIR$/AbstractFactory/Survival" />
       <recent name="$PROJECT_DIR$/AbstractFactory" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Maze" />
+      <recent name="AbstractFactory.TreasureHunt" />
+      <recent name="AbstractFactory" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -82,7 +152,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.CellTest.isLife">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Maze.Main" />
       <module name="CS4227" />
@@ -97,28 +167,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="Maze.Runner" />
+    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS4227" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../javafx-sdk-11.0.2/lib --add-modules=javafx.controls" />
+      <option name="PACKAGE_NAME" value="Maze" />
+      <option name="MAIN_CLASS_NAME" value="Maze.BoardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.attachWalls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS4227" />
+      <option name="PACKAGE_NAME" value="Maze" />
+      <option name="MAIN_CLASS_NAME" value="Maze.BoardTest" />
+      <option name="METHOD_NAME" value="attachWalls" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.removeWalls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS4227" />
+      <option name="PACKAGE_NAME" value="Maze" />
+      <option name="MAIN_CLASS_NAME" value="Maze.BoardTest" />
+      <option name="METHOD_NAME" value="removeWalls" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.setBoardHeight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS4227" />
+      <option name="PACKAGE_NAME" value="Maze" />
+      <option name="MAIN_CLASS_NAME" value="Maze.BoardTest" />
+      <option name="METHOD_NAME" value="setBoardHeight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CellTest.isLife" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS4227" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Facade.*" />
+          <option name="PATTERN" value="Maze.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="Maze" />
+      <option name="MAIN_CLASS_NAME" value="Maze.CellTest" />
+      <option name="METHOD_NAME" value="isLife" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Runner" />
+      <item itemvalue="JUnit.BoardTest.removeWalls" />
+      <item itemvalue="JUnit.BoardTest.attachWalls" />
+      <item itemvalue="JUnit.BoardTest" />
+      <item itemvalue="JUnit.BoardTest.setBoardHeight" />
+      <item itemvalue="JUnit.CellTest.isLife" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Runner" />
+        <item itemvalue="JUnit.CellTest.isLife" />
+        <item itemvalue="JUnit.BoardTest.setBoardHeight" />
+        <item itemvalue="JUnit.BoardTest.removeWalls" />
+        <item itemvalue="JUnit.BoardTest" />
+        <item itemvalue="JUnit.BoardTest.attachWalls" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574943860045</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update 1.2.1">
+      <created>1574962935283</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574962935283</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,35 +306,31 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Completed &#10;&#10;Maze Generation&#10;A*&#10;&#10;Implemented&#10;&#10;Abstract Factory &#10;Facade&#10;Composite&#10;Command" />
     <MESSAGE value="update 1.2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 1.2.0" />
+    <MESSAGE value="update 1.2.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 1.2.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Maze/GameScene.java</url>
           <line>89</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java</url>
           <line>75</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/AbstractFactory/Survival/SurvivalBoard.java</url>
           <line>22</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/AbstractFactory/TreasureHunt/TreasureHuntBoard.java</url>
           <line>177</line>
           <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Maze/Board.java</url>
-          <line>251</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

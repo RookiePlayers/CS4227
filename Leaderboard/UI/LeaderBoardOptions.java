@@ -20,7 +20,9 @@ public class LeaderBoardOptions extends Stage {
     }
 
     public Scene leaderboardScene() {
+
         BorderPane borderPane = new BorderPane();
+        borderPane.setStyle("-fx-background-color:#111");
         VBox box = new VBox();
         box.setPadding(new Insets(20));
         box.setSpacing(15);
@@ -33,27 +35,27 @@ public class LeaderBoardOptions extends Stage {
         borderPane.setCenter(box);
 
         ihl.setOnAction(e -> {
-            LeaderboardGUI gui = new LeaderboardGUI("ITEM HUNTERS LEADERBOARD", "item_hunt_leaderboard.txt", 0);
+            LeaderboardGUI gui = new LeaderboardGUI("ITEM HUNTERS LEADERBOARD", "treasureHunt.txt", 0);
 
             gui.showAndWait();
         });
         clb.setOnAction(e -> {
-            LeaderboardGUI gui = new LeaderboardGUI("CLASSIC LEADERBOARD", "classic.txt");
+            LeaderboardGUI gui = new LeaderboardGUI("SURVIVE LEADERBOARD", "survival.txt");
 
             gui.showAndWait();
         });
         tclb.setOnAction(e -> {
-            LeaderboardGUI gui = new LeaderboardGUI("TIME CHALLENGE LEADERBOARD", "tc_leaderboard.txt");
+            LeaderboardGUI gui = new LeaderboardGUI("TIME CHALLENGE LEADERBOARD", "timeChallenge.txt");
 
             gui.showAndWait();
         });
 
         Scene sc = new Scene(borderPane, 800, 800);
-        sc.getStylesheets().add(getClass().getResource("/css/gameMode.css").toExternalForm());
-        ihl.getStyleClass().add("ih");
-        clb.getStyleClass().add("classic");
-        tclb.getStyleClass().add("tt");
-        title.getStyleClass().add("title");
+        sc.getStylesheets().add(getClass().getResource("/css/Trapped.css").toExternalForm());
+        ihl.getStyleClass().add("timerButton");
+        clb.getStyleClass().add("timerButton");
+        tclb.getStyleClass().add("timerButton");
+        title.getStyleClass().add("timerButton");
         box.getStyleClass().add("background");
         return sc;
 

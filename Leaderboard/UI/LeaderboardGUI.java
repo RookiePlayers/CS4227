@@ -23,6 +23,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class LeaderboardGUI extends Stage {
@@ -100,7 +101,7 @@ public class LeaderboardGUI extends Stage {
 
         ArrayList<ArrayList<String>> list = a.loadLeaderboard(filename);
         for (int i = 0; i < list.get(0).size(); i++) {
-            data.add(new Leaders(list.get(0).get(i), list.get(1).get(i), list.get(2).get(i), list.get(3).get(i)));
+            data.add(new Leaders(list.get(0).get(i), filename.contains("time")? new SimpleDateFormat("mm:ss").format(Long.parseLong(list.get(1).get(i))):list.get(1).get(i), list.get(2).get(i), list.get(3).get(i)));
 
         }
 

@@ -18,6 +18,7 @@ public class TrappedPlus extends Stage {
         Scene mainScene=new MainMenu(this).getScene(500.0,500.0);
         Navigation.initiate(mainScene);
         setScene(mainScene); // Place the scene in the stage
+        setMaximized(true);
         show();
     }
 

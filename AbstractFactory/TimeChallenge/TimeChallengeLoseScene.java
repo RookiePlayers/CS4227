@@ -64,6 +64,8 @@ public class TimeChallengeLoseScene extends MazeLoseScene {
         Button homeButton=new Button("\u2302");
         Button nextButton=new Button("▶");
         options.setSpacing(10);
+        homeButton.getStyleClass().add("nav-btn");
+        backBtbn.getStyleClass().add("nav-btn");
 
         backBtbn.setOnAction(e-> {
             Navigation.previous();
@@ -78,7 +80,7 @@ public class TimeChallengeLoseScene extends MazeLoseScene {
             stageParent.setScene( Navigation.HOME);
 
         });
-        options.getChildren().addAll(backBtbn,homeButton,nextButton);
+        options.getChildren().addAll(backBtbn,homeButton);
         return options;
     }
 

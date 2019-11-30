@@ -51,12 +51,15 @@ public class MultiplayerMenuBar extends MazeMenuBar {
         previousScene.setText("Exit");
         ChangeScene changeScene=new ChangeScene(previousScene);
         previousScene.setOnAction(e->{changeScene.press();});
+        previousScene.getStyleClass().add("nav-btn");
+
 
         this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
         time.setAlignment(Pos.CENTER);
          solutionBtn=new Button("Solution");
         solutionBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(time,solutionBtn);
+        solutionBtn.getStyleClass().add("trappedButtons");
+        bar.getChildren().addAll(solutionBtn);
 
 
 
@@ -70,6 +73,7 @@ public class MultiplayerMenuBar extends MazeMenuBar {
         int i=0;
         for(Player p:players){
             heartBox.add(new Heartbox(p.getHealth()));
+
             hbox.getChildren().add(playerModule(p,heartBox.get(i)));
             i++;
 
@@ -80,6 +84,7 @@ public class MultiplayerMenuBar extends MazeMenuBar {
     public VBox playerModule(Player player,Heartbox hbox){
         VBox vbox=new VBox();
         Label name=new Label(player.getName());
+        name.getStyleClass().add("player_label");
 
         Rectangle rectangle=new Rectangle();
         rectangle.setWidth(50);

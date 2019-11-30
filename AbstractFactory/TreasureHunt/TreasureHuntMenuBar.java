@@ -45,35 +45,38 @@ public class TreasureHuntMenuBar extends MazeMenuBar {
         VBox bar=new VBox();
         bar.setAlignment(Pos.CENTER);
 
-        bar.setSpacing(20);
+        bar.setSpacing(10);
 
 
         this.pointsBtn=new Button(points+"");
+        this.pointsBtn.getStyleClass().add("timerButton");
         pointsBtn.setAlignment(Pos.CENTER);
         this.goal=new Button(points+"");
         this.message=new Label("Can't Leave without reaching target point");
 
         HBox items=new HBox();
         items.setAlignment(Pos.CENTER);
-        items.setSpacing(30);
+        items.setSpacing(20);
         VBox item1=new VBox();
         VBox item2=new VBox();
         VBox item3=new VBox();
         VBox item4=new VBox();
         VBox item5=new VBox();
-        item1.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/coin.png"),50, 50, false, false)),new Label("50 points"));
-        item2.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/pile.gif"),50, 50, false, false)),new Label("400 points"));
-        item3.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/iphone.png"),50, 50, false, false)),new Label("1200 points"));
-        item4.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/diamond.png"),50, 50, false, false)),new Label("1600 points"));
-        item5.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/crown.png"),50, 50, false, false)),new Label("2500 points"));
+        item1.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/coin.png"),25, 25, false, false)),new Label("50 points"));
+        item2.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/pile.gif"),25, 25, false, false)),new Label("400 points"));
+        item3.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/iphone.png"),25, 25, false, false)),new Label("1200 points"));
+        item4.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/diamond.png"),25, 25, false, false)),new Label("1600 points"));
+        item5.getChildren().addAll(new ImageView(new Image(getClass().getResourceAsStream("/Images/crown.png"),25, 25, false, false)),new Label("2500 points"));
 
 
         VBox b=new VBox();
         b.setAlignment(Pos.CENTER);
 
 
-        b.setSpacing(20);
-        b.getChildren().addAll(this.pointsBtn,new Label("Points to gather: "+ MazeGameSettings.preference.getTreasureGoal()));
+        b.setSpacing(5);
+        Label goalLbl=new Label("Points to gather: "+ MazeGameSettings.preference.getTreasureGoal());
+        goalLbl.setStyle("-fx-text-fill:green;-fx-font-size:18px");
+        b.getChildren().addAll(this.pointsBtn,goalLbl);
 
         bar.setSpacing(10);
         INavigationControl nControl= NavigationController.getNavigation();
@@ -81,8 +84,10 @@ public class TreasureHuntMenuBar extends MazeMenuBar {
         previousScene.setText("Exit");
         ChangeScene changeScene=new ChangeScene(previousScene);
         previousScene.setOnAction(e->{changeScene.press();});
+        previousScene.getStyleClass().add("nav-btn");
 
         solutionBtn=new Button("Solution");
+        solutionBtn.getStyleClass().add("trappedButtons");
         solutionBtn.setAlignment(Pos.CENTER_RIGHT);
         items.getChildren().addAll(playerBox(),item1,item2,item3,item4,item5,solutionBtn);
         bar.getChildren().addAll(items,b,message);

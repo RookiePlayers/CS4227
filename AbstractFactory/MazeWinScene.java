@@ -1,8 +1,11 @@
 package AbstractFactory;
 
+import Leaderboard.Models.Leaderboard;
+import Leaderboard.UI.LeaderBoardOptions;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import  Maze.Player;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -47,6 +50,18 @@ public abstract class MazeWinScene extends Scene {
     }
 
     public void setWinner(Player winner) {
-        Winner = winner;
+        this.Winner = winner;
+    }
+    public void saveUser(String mode,String val){
+        Leaderboard lb=new Leaderboard();
+        lb.saveToLeaderBoard(mode+".txt",
+               "Ollie",
+                val+"",
+                "--");
+
+    }
+    public void showLB(){
+        Stage s=new LeaderBoardOptions();
+        s.show();
     }
 }

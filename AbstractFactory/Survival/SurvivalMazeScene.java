@@ -18,7 +18,8 @@ public class SurvivalMazeScene extends MazeScene {
         super(parent);
         this.parentStage=parentStage;
         setRoot(mainScene());
-        super.timed=false;
+        super.timed=true;
+        super.foward=true;
 
 
     }
@@ -57,6 +58,8 @@ public class SurvivalMazeScene extends MazeScene {
         Button homeButton=new Button("\u2302");
         Button nextButton=new Button("▶");
         options.setSpacing(10);
+        homeButton.getStyleClass().add("nav-btn");
+        backBtbn.getStyleClass().add("nav-btn");
 
         backBtbn.setOnAction(e-> {
             Navigation.previous();
@@ -71,7 +74,7 @@ public class SurvivalMazeScene extends MazeScene {
             parentStage.setScene( Navigation.HOME);
 
         });
-        options.getChildren().addAll(backBtbn,homeButton,nextButton);
+        options.getChildren().addAll(backBtbn,homeButton);
         return options;
     }
 }

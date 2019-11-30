@@ -48,7 +48,7 @@ public class SurvivalWinScene extends MazeWinScene {
         Label gameover=new Label(GAMEOVER);
         gameover.setAlignment(Pos.CENTER);
         gameover.setStyle("-fx-font-size:58px;-fx-text-fill:green;");
-        Label timeleft=new Label("Time Left");
+        Label timeleft=new Label("Time Taken");
         timeleft.setAlignment(Pos.CENTER);
         timeleft.setStyle("-fx-font-size:14px");
        time=new Label();
@@ -71,6 +71,8 @@ public class SurvivalWinScene extends MazeWinScene {
         Button homeButton=new Button("\u2302");
         Button nextButton=new Button("▶");
         options.setSpacing(10);
+        homeButton.getStyleClass().add("nav-btn");
+        backBtbn.getStyleClass().add("nav-btn");
 
         backBtbn.setOnAction(e-> {
             Navigation.previous();
@@ -85,7 +87,7 @@ public class SurvivalWinScene extends MazeWinScene {
             stageParent.setScene( Navigation.HOME);
 
         });
-        options.getChildren().addAll(backBtbn,homeButton,nextButton);
+        options.getChildren().addAll(backBtbn,homeButton);
         return options;
     }
     @Override

@@ -2,6 +2,7 @@ package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.MazeWinScene;
 import Leaderboard.Models.Leaderboard;
+import Leaderboard.UI.LeaderBoardOptions;
 import Maze.Navigation;
 import Maze.Player;
 import javafx.application.Platform;
@@ -62,17 +63,17 @@ public class TimeChallengeWinScene extends MazeWinScene {
         actions.setSpacing(10);
         Button saveScore=new Button("Save Score");
         saveScore.setOnAction(e->{
-            Leaderboard leaderboard = new Leaderboard("item_hunt_leaderboard.txt");
-
-                      /*  name = nameField.getText();
-                        this.player.setName(name);
-                        leaderboard.saveToLeaderBoard("time_challenge_leaderboard.txt", name, ((maze.getPgem() * 100) + (maze.getGgem() * 200) + (maze.getBgem() * 500) - Long.parseLong(timer.toString())) + " point(s)", maze.getTitle());
-                        save.setDisable(true);*/
-
-
-
+            saveUser("timeChallenge",timer+"");
+            actions.getChildren().remove(saveScore);
         });
+
         Button leaderboard=new Button("Leaderboard");
+        leaderboard.setOnAction(
+                e->{
+                    LeaderBoardOptions lbo=new LeaderBoardOptions();
+                    lbo.show();
+                }
+        );
         actions.getChildren().addAll(saveScore,leaderboard);
         vbox.setSpacing(20);
         vbox.getChildren().addAll(title,gameover,timeleft,time,actions);
@@ -84,6 +85,8 @@ public class TimeChallengeWinScene extends MazeWinScene {
         Button homeButton=new Button("\u2302");
         Button nextButton=new Button("▶");
         options.setSpacing(10);
+        homeButton.getStyleClass().add("nav-btn");
+        backBtbn.getStyleClass().add("nav-btn");
 
         backBtbn.setOnAction(e-> {
             Navigation.previous();
@@ -98,7 +101,7 @@ public class TimeChallengeWinScene extends MazeWinScene {
             stageParent.setScene( Navigation.HOME);
 
         });
-        options.getChildren().addAll(backBtbn,homeButton,nextButton);
+        options.getChildren().addAll(backBtbn,homeButton);
         return options;
     }
     @Override

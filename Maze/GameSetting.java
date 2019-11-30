@@ -45,9 +45,14 @@ public class GameSetting{
         previousScene.setOnAction(e->{changeScene.press();parent.setScene(Navigation.ACTIVESCENE);});
         nextScene.setOnAction(e->{changeScene.press();parent.setScene(Navigation.ACTIVESCENE);});
 
+        previousScene.getStyleClass().add("nav-btn2");
+        nextScene.getStyleClass().add("nav-btn2");
+
         HBox vbox=new HBox();
         Button backBtbn=new Button("◀");
         Button nextButton=new Button("▶");
+        backBtbn.getStyleClass().add("nav-btn2");
+        nextButton.getStyleClass().add("nav-btn2");
         vbox.setSpacing(10);
         vbox.getChildren().addAll(previousScene,nextScene);
         backBtbn.setOnAction(e->{
@@ -360,9 +365,9 @@ public class GameSetting{
 
         Button save=new Button("Let's Play");
         save.setOnAction(e->{
-            Player play1=new Player(textField.getText(),3,new Inventory(),0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,preference.getSizeFactor(),preference.getSizeFactor()));
+            Player play1=new Player(!textField.getText().equals("") ?textField.getText():"Player 1",3,new Inventory(),0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,preference.getSizeFactor(),preference.getSizeFactor()));
             play1.setColor(c1);
-            Player play2=new Player(textField.getText(),3,new Inventory(),0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,preference.getSizeFactor(),preference.getSizeFactor()));
+            Player play2=new Player(!textField2.getText().equals("") ?textField2.getText():"Player 2",3,new Inventory(),0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,preference.getSizeFactor(),preference.getSizeFactor()));
             play2.setColor(c2);
             preference.getPlayerInGame().clear();
             preference.getPlayerInGame().add(play1);
@@ -514,6 +519,8 @@ public class GameSetting{
         ((BorderPane) root).setCenter(settingsDialog());
         scene=new Scene(root,h,w, Color.WHITE); root.prefHeightProperty().bind(scene.heightProperty());
         root.prefWidthProperty().bind(scene.widthProperty());
+        scene.getStylesheets().add(getClass().getResource("/css/Trapped.css").toExternalForm());
+
         return scene;
     }
 }

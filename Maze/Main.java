@@ -19,8 +19,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage=login();
+        stage=new TrappedPlus();
+        stage.setMaximized(true);
         stage.show();
+
 
 
 
