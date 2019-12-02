@@ -1,6 +1,6 @@
 package Facade;
 
-import Maze.Player;
+import Maze.Composite.Player;
 
 public class PlayerFacade {
     private Player player;

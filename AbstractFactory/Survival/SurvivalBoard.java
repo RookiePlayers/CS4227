@@ -1,10 +1,16 @@
 package AbstractFactory.Survival;
 
-import Maze.*;
-import Maze.ButtonFactory.Door;
-import inventory.Models.Inventory;
+import Adapter.IceTrap;
+import Adapter.IceTrapAdapter;
+import Maze.Composite.*;
+import Maze.Persistance.BoardCells;
+import Maze.Persistance.MazeGameSettings;
+import Maze.UI.EnemyBoard;
+import Maze.UI.MazePreference;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+
+import java.util.Random;
 
 public class SurvivalBoard extends Board {
 Player player;
@@ -24,7 +30,7 @@ Player player;
 
     }
     public void setTraps(int traps){
-        traps=Math.min(traps,BoardCells.cells.size());
+        traps=Math.min(traps, BoardCells.cells.size());
         while (traps>0){
             replaceForTrap();
             traps--;
@@ -65,14 +71,26 @@ Player player;
         int entry=(int)(Math.random()*BoardCells.cells.size());
         System.out.println(entry+"--"+BoardCells.cells.size());
         Cell c= BoardCells.cells.get(entry);
+        boolean isIceTrap=new Random().nextBoolean();
         if(!c.isDoor()){
-            c.setTrap(true);
-            BoardCells.cells.get(entry).changeColor(Color.RED);
-            Trap trap=new Trap(c.getI(),c.getJ(),c.getWidth(),c.getHeight());
-            trap.setGc(c.getGc());
-            System.out.println(">>>>>"+c);
-            trap.setSpecialWalls(c.getSpecialWalls());
-            BoardCells.cells.set(entry,trap);
+            if(isIceTrap){
+                c.setTrap(true);
+                BoardCells.cells.get(entry).changeColor(Color.LIGHTBLUE);
+                IceTrap trap=new IceTrap(c.getI(),c.getJ(),c.getWidth(),c.getHeight());
+                trap.setGc(c.getGc());
+                System.out.println(">>>>>"+c);
+                trap.setSpecialWalls(c.getSpecialWalls());
+                BoardCells.cells.set(entry,trap);
+                IceTrapAdapter icetrap=new IceTrapAdapter(trap);
+            }else {
+                c.setTrap(true);
+                BoardCells.cells.get(entry).changeColor(Color.RED);
+                Trap trap = new Trap(c.getI(), c.getJ(), c.getWidth(), c.getHeight());
+                trap.setGc(c.getGc());
+                System.out.println(">>>>>" + c);
+                trap.setSpecialWalls(c.getSpecialWalls());
+                BoardCells.cells.set(entry, trap);
+            }
         }
         //else replaceForTrap();
 

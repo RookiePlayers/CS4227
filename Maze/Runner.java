@@ -1,5 +1,7 @@
 package Maze;
 
+import Maze.Composite.Board;
+import Maze.MazeSolver.TestMaze;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

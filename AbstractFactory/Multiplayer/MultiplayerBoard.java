@@ -1,11 +1,7 @@
 package AbstractFactory.Multiplayer;
 
-import Maze.Board;
-import Maze.Cell;
-import Maze.MazePreference;
-import Maze.Player;
-import inventory.Models.Inventory;
-import javafx.scene.paint.Color;
+import Maze.Composite.Board;
+import Maze.UI.MazePreference;
 
 public class MultiplayerBoard extends Board {
 

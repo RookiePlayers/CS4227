@@ -1,11 +1,9 @@
 package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.MazeScene;
-import Maze.Board;
-import Maze.Navigation;
-import Maze.Stages;
+import Maze.Composite.Board;
+import Maze.Persistance.Navigation;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;

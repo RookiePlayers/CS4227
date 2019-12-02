@@ -1,0 +1,8 @@
+Currently set up so that:
+The accepted logins are read from logins.txt in Resources file
+Current user is written to file currentuser.txt in Resources
+Both of the above are shown in the png CS4227FileLocations
+
+Otherwise, just add both packages to project, edit main to match png CS4227Main and SurvivalBoard to match relevant png
+
+Class Trap was moved to Adapter package for cohesion

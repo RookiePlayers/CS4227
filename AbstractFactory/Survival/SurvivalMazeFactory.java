@@ -1,8 +1,9 @@
 package AbstractFactory.Survival;
 
 import AbstractFactory.*;
-import Maze.Board;
-import Maze.*;
+import Maze.Composite.Board;
+import Maze.Composite.Player;
+import Maze.UI.MazePreference;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 

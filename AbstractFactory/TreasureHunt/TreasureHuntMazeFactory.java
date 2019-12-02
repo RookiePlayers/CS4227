@@ -1,9 +1,9 @@
 package AbstractFactory.TreasureHunt;
 
 import AbstractFactory.*;
-import Maze.Board;
-import Maze.MazePreference;
-import Maze.Player;
+import Maze.Composite.Board;
+import Maze.UI.MazePreference;
+import Maze.Composite.Player;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 

@@ -59,6 +59,12 @@
         -fx-font-size:31px;
 
 }
+.freezeButtons{
+-fx-background-color:lightblue;
+-fx-padding:10px;
+ -fx-text-fill:white;
+        -fx-font-size:26px;
+}
 .trappedButtons{
  -fx-background-color:green;
  -fx-text-fill:white;

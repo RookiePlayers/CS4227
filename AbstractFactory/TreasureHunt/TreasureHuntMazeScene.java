@@ -1,8 +1,8 @@
 package AbstractFactory.TreasureHunt;
 
 import AbstractFactory.MazeScene;
-import Maze.Board;
-import Maze.Navigation;
+import Maze.Composite.Board;
+import Maze.Persistance.Navigation;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;

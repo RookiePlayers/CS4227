@@ -2,9 +2,7 @@ package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.MazeMenuBar;
 import Command.*;
-import Maze.Navigation;
-import Maze.Player;
-import Maze.TestMaze;
+import Maze.Composite.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -14,7 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 

@@ -1,8 +1,7 @@
 package AbstractFactory;
-import  Maze.Player;
+import Maze.Composite.Player;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package Command.PlayerCommand;
 
-import Maze.Actor;
+import Maze.Composite.Actor;
 
 
 public class WASDMovementI implements IPlayerMovement {

@@ -1,5 +1,7 @@
 package Maze;
 
+import Interceptor.LoginScreen;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -19,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage=new TrappedPlus();
+        stage=new LoginScreen();
         stage.setMaximized(true);
         stage.show();
 

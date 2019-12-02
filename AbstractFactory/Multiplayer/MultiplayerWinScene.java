@@ -1,8 +1,8 @@
 package AbstractFactory.Multiplayer;
 
 import AbstractFactory.MazeWinScene;
-import Maze.Navigation;
-import Maze.Player;
+import Maze.Persistance.Navigation;
+import Maze.Composite.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;

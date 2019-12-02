@@ -2,9 +2,11 @@ package AbstractFactory;
 
 import Leaderboard.Models.Leaderboard;
 import Leaderboard.UI.LeaderBoardOptions;
+import Maze.Persistance.MazeGameSettings;
+import Maze.Persistance.MazeParts;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import  Maze.Player;
+import Maze.Composite.Player;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public abstract class MazeWinScene extends Scene {
     public void saveUser(String mode,String val){
         Leaderboard lb=new Leaderboard();
         lb.saveToLeaderBoard(mode+".txt",
-               "Ollie",
+                MazeParts.CURRENTUSER!=null?MazeParts.CURRENTUSER.getUsername(): MazeGameSettings.preference.getPlayerInGame().get(0).getName(),
                 val+"",
                 "--");
 

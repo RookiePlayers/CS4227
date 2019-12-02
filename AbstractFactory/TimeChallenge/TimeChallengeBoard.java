@@ -1,10 +1,7 @@
 package AbstractFactory.TimeChallenge;
 
-import Maze.Board;
-import Maze.Cell;
-import Maze.MazePreference;
-import Maze.Player;
-import inventory.Models.Inventory;
+import Maze.Composite.Board;
+import Maze.UI.MazePreference;
 
 public class TimeChallengeBoard extends Board {
 

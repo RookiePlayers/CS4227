@@ -1,7 +1,7 @@
 package AbstractFactory.Survival;
 
 import AbstractFactory.MazeLoseScene;
-import Maze.Navigation;
+import Maze.Persistance.Navigation;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;

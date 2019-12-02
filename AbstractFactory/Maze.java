@@ -1,26 +1,26 @@
 package AbstractFactory;
 
-import AbstractFactory.Survival.SurvivalMenuBar;
 import AbstractFactory.TimeChallenge.TimeChallengeMenuBar;
+import Maze.Composite.Player;
+import Maze.Enumerations.GameState;
+import Maze.MazeSolver.TestMaze;
+import Maze.Persistance.MazeGameSettings;
+import Memento.PauseMenu;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import Maze.Board;
-import Maze.Navigation;
-import Maze.Scenes;
+import Maze.Composite.Board;
+import Maze.Persistance.Navigation;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import Maze.MazeParts;
-import  Maze.MazePreference;
-import Maze.*;
-import javax.swing.border.Border;
+import Maze.Persistance.MazeParts;
+import Maze.UI.MazePreference;
 
 public class Maze extends ScrollPane implements  Runnable{
     private MazeFactory factory;
@@ -165,7 +165,7 @@ public class Maze extends ScrollPane implements  Runnable{
         options.setAlignment(Pos.CENTER);
         Button backBtbn=new Button("◀");
         Button homeButton=new Button("\u2302");
-        Button nextButton=new Button("▶");
+        Button pauseButton=new Button("\u23F8");
         options.setSpacing(10);
         options.setAlignment(Pos.TOP_LEFT);
 
@@ -174,9 +174,8 @@ public class Maze extends ScrollPane implements  Runnable{
             parent.setScene(Navigation.ACTIVESCENE);
 
         });
-        nextButton.setOnAction(e->{
-            Navigation.forward();
-            parent.setScene(Navigation.ACTIVESCENE);
+        pauseButton.setOnAction(e->{
+          new PauseMenu(parent).show();
         });
         homeButton.setOnAction(e->{
             parent.setScene( Navigation.HOME);
@@ -184,9 +183,9 @@ public class Maze extends ScrollPane implements  Runnable{
         });
         homeButton.getStyleClass().add("nav-btn");
         backBtbn.getStyleClass().add("nav-btn");
-        nextButton.getStyleClass().add("nav-btn");
+        pauseButton.getStyleClass().add("nav-btn");
 
-        options.getChildren().addAll(backBtbn,homeButton);
+        options.getChildren().addAll(backBtbn,homeButton,pauseButton);
         return options;
     }
     @Override
@@ -196,7 +195,7 @@ public class Maze extends ScrollPane implements  Runnable{
                 //if Time is Up
                 System.out.println(this.gameBoard.isGoal());
 
-                   if(this.mainScene.isTimed()&&!this.mainScene.isFoward())
+                   if(this.mainScene.isTimed()&&!this.mainScene.isFoward()&&MazeGameSettings.GAMESTATE==GameState.PLAYING)
                    {
                        if(timeLength>0){
                            timeLength=timeLength-1000;
@@ -219,7 +218,7 @@ public class Maze extends ScrollPane implements  Runnable{
                            }
                        }
                    }
-                   else if(this.mainScene.isTimed()&&this.mainScene.isFoward())
+                   else if(this.mainScene.isTimed()&&this.mainScene.isFoward()&&MazeGameSettings.GAMESTATE==GameState.PLAYING)
                    {
 
                         timeLength=(timeLength+1000);

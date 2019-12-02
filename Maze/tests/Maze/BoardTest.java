@@ -1,9 +1,11 @@
 package Maze;
 
-import Composite.Wall;
-import Maze.*;
-import Maze.ButtonFactory.Door;
-import inventory.Models.Inventory;
+import Maze.Composite.Board;
+import Maze.Composite.Cell;
+import Maze.Composite.Player;
+import Maze.Composite.Wall;
+import Maze.Persistance.BoardCells;
+import Maze.UI.MazePreference;
 import javafx.scene.paint.Color;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -19,12 +21,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTest {
    private MazePreference preference=new MazePreference();
-   private  Board board=new Board(800.0,800.0,preference);
-   private Player player=new Player("",0,new Inventory(),0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,0,0));
+   private Board board=new Board(800.0,800.0,preference);
+   private Player player=new Player("",0,0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,0,0));
     @Test
     public void getMazePreference() throws Exception {
 
-        assertNotEquals(null,board.getMazePreference(),"Maze.Board().getMazePreference Cannot be null");
+        assertNotEquals(null,board.getMazePreference(),"Maze.Composite.Board().getMazePreference Cannot be null");
 
     }
 
@@ -151,7 +153,7 @@ public class BoardTest {
 
     @Test
     public void initiate() throws Exception {
-     assertNotEquals(0,BoardCells.cells.size());
+     assertNotEquals(0, BoardCells.cells.size());
     }
 
 

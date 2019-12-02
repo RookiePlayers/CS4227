@@ -1,14 +1,12 @@
 package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.MazeWinScene;
-import Leaderboard.Models.Leaderboard;
 import Leaderboard.UI.LeaderBoardOptions;
-import Maze.Navigation;
-import Maze.Player;
+import Maze.Persistance.Navigation;
+import Maze.Composite.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;

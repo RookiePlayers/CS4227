@@ -1,12 +1,14 @@
 package AbstractFactory.TreasureHunt;
 
-import Maze.*;
+import Maze.Composite.*;
+import Maze.Persistance.BoardCells;
+import Maze.UI.EnemyBoard;
+import Maze.UI.MazePreference;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class TreasureHuntBoard extends Board {
 Player player;
@@ -34,7 +36,7 @@ Player player;
 
     }
     public void setTraps(int traps){
-        traps=Math.min(traps,BoardCells.cells.size());
+        traps=Math.min(traps, BoardCells.cells.size());
         while (traps>0){
             replaceForTrap();
             traps--;

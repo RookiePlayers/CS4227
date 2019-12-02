@@ -5,8 +5,8 @@ import Command.ChangeScene;
 import Command.INavigationControl;
 import Command.NavigationController;
 import Command.PreviousScene;
-import Maze.Heartbox;
-import Maze.Player;
+import Maze.UI.Heartbox;
+import Maze.Composite.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 public class SurvivalMenuBar extends MazeMenuBar {
     Button time;
+    public static Label FREEZETIME;
     //Button solutionBtn;
     private ArrayList<Heartbox> heartBox = new ArrayList<>();
     public SurvivalMenuBar(ArrayList<Player>players){
@@ -51,10 +52,14 @@ public class SurvivalMenuBar extends MazeMenuBar {
         this.time=new Button(new SimpleDateFormat("mm:ss").format(timer));
         time.setAlignment(Pos.CENTER);
         time.getStyleClass().add("timerButton");
+
+        FREEZETIME=new Label();
+        FREEZETIME.getStyleClass().add("freezeButtons");
+
         solutionBtn=new Button("Solution");
         solutionBtn.getStyleClass().add("trappedButtons");
         solutionBtn.setAlignment(Pos.CENTER_RIGHT);
-        bar.getChildren().addAll(time,solutionBtn);
+        bar.getChildren().addAll(time,solutionBtn,FREEZETIME);
 
 
 

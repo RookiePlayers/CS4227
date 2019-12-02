@@ -1,6 +1,6 @@
 package Command;
 
-import Maze.Navigation;
+import Maze.Persistance.Navigation;
 import javafx.scene.Scene;
 
 public class SceneINavigation implements INavigationControl {

@@ -1,8 +1,9 @@
 package AbstractFactory.TreasureHunt;
 
 import AbstractFactory.MazeWinScene;
-import Maze.Navigation;
-import Maze.Player;
+import Leaderboard.UI.LeaderBoardOptions;
+import Maze.Persistance.Navigation;
+import Maze.Composite.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -14,7 +15,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class TreasureHuntWinScene extends MazeWinScene {
@@ -59,7 +59,18 @@ public class TreasureHuntWinScene extends MazeWinScene {
         actions.setAlignment(Pos.CENTER);
         actions.setSpacing(10);
         Button saveScore=new Button("Save Score");
+        saveScore.setOnAction(e->{
+            saveUser("treasureHunt",points+"");
+            actions.getChildren().remove(saveScore);
+        });
+
         Button leaderboard=new Button("Leaderboard");
+        leaderboard.setOnAction(
+                e->{
+                    LeaderBoardOptions lbo=new LeaderBoardOptions();
+                    lbo.show();
+                }
+        );
         actions.getChildren().addAll(saveScore,leaderboard);
         vbox.setSpacing(20);
         vbox.getChildren().addAll(title,gameover,points_earned,pointLbl,actions);

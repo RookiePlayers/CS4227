@@ -1,9 +1,11 @@
 package Maze.MazeSolver;
 
-import Maze.Board;
-import Maze.BoardCells;
-import Maze.Cell;
-import Composite.NormalWall;
+import Maze.Composite.Board;
+import Maze.Persistance.BoardCells;
+import Maze.Composite.Cell;
+import Maze.Composite.NormalWall;
+import Strategy.AIContext;
+import Strategy.ManHanDistance;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -27,6 +29,8 @@ public class MazeSolver extends Canvas implements Runnable {
     static boolean additionalPath=false;
     private GraphicsContext gc;
 
+    AIContext context=new AIContext();
+
     public MazeSolver(Board board,int columns,int rows){
         this.columns=columns;
         this.rows=rows;
@@ -46,7 +50,7 @@ public class MazeSolver extends Canvas implements Runnable {
 
         now=start;
 
-
+        context.setStrategy(new ManHanDistance());
        setHeuristics();
         System.out.println("Heustics Aplied");
         findPathTo();
@@ -67,7 +71,8 @@ public class MazeSolver extends Canvas implements Runnable {
     public int calcHeuristic(Cell current){
        // double h=Math.sqrt(Math.pow((goal.getI()-current.getI()),2)+Math.pow((goal.getJ()-current.getJ()),2));
       //  return (int)h;
-        return manHanDistance( current);
+
+        return context.executeStrategy(current,goal);
 
     }
     private int manHanDistance(Cell current) {
@@ -98,21 +103,26 @@ public class MazeSolver extends Canvas implements Runnable {
 
         if(north!=null)
         {
+            north.setParent(thisCell);
             if(!isWallNorth(thisCell,north))
             neighbours.get(0).add(north);
             else neighbours.get(1).add(north);
+
         }
         if(south!=null) {
+            south.setParent(thisCell);
             if(!isWallSouth(thisCell,south))
             neighbours.get(0).add(south);
             else neighbours.get(1).add(south);
         }
         if(east!=null) {
+            east.setParent(thisCell);
             if(!isWallEast(thisCell,east))
             neighbours.get(0).add(east);
             else neighbours.get(1).add(east);
         }
         if(west!=null){
+            west.setParent(thisCell);
             if(!isWallWest(thisCell,west))
             neighbours.get(0).add(west);
             else neighbours.get(1).add(east);
@@ -126,16 +136,15 @@ public class MazeSolver extends Canvas implements Runnable {
         ArrayList<Cell>goodNeighbours=checkPlayerNeighbours(this.now).get(0);
         System.out.println("GOOD NEIGHBOURS: "+goodNeighbours);
         for(Cell c:goodNeighbours){
-            if(true){//!isBlocked(c)
-                System.out.println("Not blocked");
-                c.setParent(this.now);
-                c.setgCosts(this.now.getgCosts());
-                c.sethCosts(calcHeuristic(c));
-                if(!findNeighborInList(this.openList,c)&&!findNeighborInList(this.closedList,c)){
-                    c.setgCosts(c.parent.getgCosts()+1);
-                    openList.add(c);
-                    Collections.sort(this.openList);
-                }
+            //!isBlocked(c)
+            System.out.println("Not blocked");
+
+            c.setgCosts(this.now.getgCosts());
+            c.sethCosts(calcHeuristic(c));
+            if(!findNeighborInList(this.openList,c)&&!findNeighborInList(this.closedList,c)){
+                c.setgCosts(c.parent.getgCosts()+1);
+                openList.add(c);
+                Collections.sort(this.openList);
             }
         }
 
@@ -151,6 +160,7 @@ public class MazeSolver extends Canvas implements Runnable {
     public List<Cell> findPathTo() {
         System.out.println("FIND PATH TO GOAL");
         this.closedList.add(this.now);
+        //this.now.visited=true;
         System.out.println("CLOSED LIST: "+this.closedList);
 
         addNeigborsToOpenList();

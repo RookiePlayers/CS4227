@@ -1,12 +1,10 @@
 package AbstractFactory.TimeChallenge;
 
 import AbstractFactory.*;
-import Maze.Board;
-import Maze.Player;
-import Maze.MazePreference;
+import Maze.Composite.Board;
+import Maze.Composite.Player;
+import Maze.UI.MazePreference;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;

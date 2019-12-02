@@ -1,8 +1,9 @@
 package AbstractFactory.Survival;
 
 import AbstractFactory.MazeWinScene;
-import Maze.Navigation;
-import Maze.Player;
+import Leaderboard.UI.LeaderBoardOptions;
+import Maze.Persistance.Navigation;
+import Maze.Composite.Player;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -60,6 +61,17 @@ public class SurvivalWinScene extends MazeWinScene {
         actions.setSpacing(10);
         Button saveScore=new Button("Save Score");
         Button leaderboard=new Button("Leaderboard");
+        saveScore.setOnAction(e->{
+            saveUser("survival",timer+"");
+            actions.getChildren().remove(saveScore);
+        });
+
+        leaderboard.setOnAction(
+                e->{
+                    LeaderBoardOptions lbo=new LeaderBoardOptions();
+                    lbo.show();
+                }
+        );
         actions.getChildren().addAll(saveScore,leaderboard);
         vbox.setSpacing(20);
         vbox.getChildren().addAll(title,gameover,timeleft,time,actions);

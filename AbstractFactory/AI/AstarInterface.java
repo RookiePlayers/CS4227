@@ -1,8 +1,6 @@
 package AbstractFactory.AI;
 
-import Maze.Cell;
-
-import java.util.ArrayList;
+import Maze.Composite.Cell;
 
 public interface AstarInterface {
     public int calcHeuristics(Cell current, Cell target);

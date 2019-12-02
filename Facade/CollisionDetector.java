@@ -1,7 +1,8 @@
 package Facade;
 
-import AbstractFactory.MazeMenuBar;
-import Maze.*;
+import Adapter.IceTrap;
+import Maze.Composite.*;
+import Maze.Persistance.MazeParts;
 
 public class CollisionDetector {
     public Player player;
@@ -15,6 +16,14 @@ public class CollisionDetector {
         if(cell.isTrap()){
             cell.triggerTrap(player);
             MazeParts.currentMenubar.updateHealth(player);
+
+        }
+
+    }
+    public void detectTrapCollision( IceTrap cell){
+        if(cell.isTrap()){
+            cell.triggerTrap(player);
+           // MazeParts.currentMenubar.updateHealth(player);
 
         }
 

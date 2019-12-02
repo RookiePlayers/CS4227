@@ -1,8 +1,10 @@
 package Maze;
 
-import Maze.ButtonFactory.Door;
-import inventory.Models.Inventory;
-import javafx.scene.image.Image;
+import Maze.Composite.Door;
+import Maze.Composite.*;
+import Maze.Persistance.BoardCells;
+import Maze.UI.MazePreference;
+
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class CellTest {
 
     private MazePreference preference=new MazePreference();
-    private  Board board=new Board(800.0,800.0,preference);
-    private  Cell c=new Cell(0,0,0,0);
-    private Player player=new Player("",0,new Inventory(),0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,0,0));
+    private Board board=new Board(800.0,800.0,preference);
+    private Cell c=new Cell(0,0,0,0);
+    private Player player=new Player("",0,0,0,preference.getSizeFactor(),preference.getSizeFactor(),new Cell(0,0,0,0));
 
     @Test
     void isLife() {
